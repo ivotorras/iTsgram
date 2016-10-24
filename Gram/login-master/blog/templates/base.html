@@ -1,0 +1,39 @@
+<!-- base.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load staticfiles %}
+<html>
+<head>
+    
+    
+     <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+          
+    
+    
+<!--    
+    
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href=" {% static 'css/base.css'%}">
+    <link rel="stylesheet" type="text/css" href=" {% static 'css/home.css'%}">
+
+-->
+    </head> 
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <h1>{% block head %}{% endblock %}</h1>
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+        
+    </body>
+    
+    
+</html>
