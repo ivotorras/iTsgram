@@ -1,0 +1,78 @@
+<!-- login.html -->
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+    {% if form.errors %}
+        <p>Su Nombre de Usuario y/o Contraseña son incorrectos. Inténtelo de nuevo.</p>
+    {% endif %}
+<html>
+     <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+
+<body>
+
+    
+    
+    
+    <form class="form" method="post" action="." >{% csrf_token %}
+    <div style="top:10%; position:relative; bottom:-50%">
+    <div class="row">    
+    <div class="col s6 offset-s3">    
+    <div class="card-panel">
+        
+        <div class="center-align">
+          <a href="#" class="brand-logo center"><img src="/static/images/logo.png" width="205" height="60"></a>
+            <BR></BR>    
+        </div>
+        
+
+        
+        <input type="text" class="validate" placeholder="Username" name="username" >
+        <input type="password" class="validate" placeholder="Password" name="password">
+
+        <BR></BR>
+        
+         <div>
+    <div class="center-align">
+        <button class="btn waves-effect waves red lighten-0" type="submit"  value="Login" id="login-button">Login</button>
+        <button class="btn waves-effect waves-light btn" type="button" onclick="window.location.href='/register/' ">Register</button>
+        <input type="hidden" name="next" value="/home" />
+      </div>
+    </div>
+    </div>
+    </div>
+</div>        
+        </div>
+        
+        
+<!--          <div class="progress">
+      <div class="indeterminate"></div>
+  </div>
+        -->
+        
+        
+         </form>
+    </body>
+ 
+        
+             
+<style>
+    body{
+     background-color: #E0E0E0  !important;
+}
+ 
+    
+
+ </style>    
+        
+
+    
+</html>
+{% endblock %}
