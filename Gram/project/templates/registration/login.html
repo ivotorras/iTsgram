@@ -2,9 +2,13 @@
 {% extends "base.html" %}
 {% block title %}Login{% endblock %}
 {% block content %}
-    {% if form.errors %}
-        <p>Su Nombre de Usuario y/o Contraseña son incorrectos. Inténtelo de nuevo.</p>
-    {% endif %}
+
+
+{% if form.errors %}
+
+{% endif %}
+
+
 <html>
      <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
@@ -60,13 +64,28 @@
         
          </form>
     </body>
- 
-        
+    <script>
+    
+    Materialize.toast('Su Nombre de Usuario y/o Contraseña son incorrectos. Inténtelo de nuevo.', 4000)
+    
+    
+    </script>
+
              
 <style>
     body{
      background-color: #E0E0E0  !important;
 }
+    
+    
+#toast-container {
+  top: auto !important;
+  right: auto !important;
+  bottom: 33.8%;
+  left:28.5%;  
+}    
+    
+    
 
  </style>    
         
