@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^register/success/$', register_success),
     url(r'^login/$', 'django.contrib.auth.views.login'),
     url(r'^logout/$', logout_page),
+    url(r'^perfil/$','django.contrib.auth.perfil'),
 	url(r'^home/perfil/$', perfil , name="perfil"),
 	url(r'^home/$', subir , name="subir"),
     url(r'^myapp/list/$', RedirectView.as_view(url='/login/', permanent=True)),
