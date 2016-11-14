@@ -9,7 +9,10 @@ from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
- 
+from django.shortcuts import render
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+
 @csrf_protect
 def register(request):
     if request.method == 'POST':
@@ -43,7 +46,26 @@ def logout_page(request):
  
 @login_required
 def home(request):
+    context  = RequestContext(request)
+    context['user'] = request.user
+    if request.method == 'POST':
+        print 'asd --->', request.FILES
+        uplo = request.FILES['uplo']
+        fs = FileSystemStorage()
+        filename = fs.save(uplo.name, uplo)
+        uploaded_file_url = fs.url(filename)
+        return render(request, 'home.html', {
+            'uploaded_file_url': uploaded_file_url
+        })
     return render_to_response(
-    'home.html',
-    { 'user': request.user }
+    'home.html',context
     )
+
+
+
+def simple_upload(request):
+    print 'entro'
+    
+    return render(request, 'templates/home.html')
+
+
