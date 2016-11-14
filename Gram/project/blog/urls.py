@@ -15,7 +15,7 @@ urlpatterns = [
     url(r'^logout/$', logout_page),
     url(r'^perfil/$','django.contrib.auth.perfil'),
 	url(r'^home/perfil/$', perfil , name="perfil"),
-	url(r'^home/$', subir , name="subir"),
+	
     url(r'^myapp/list/$', RedirectView.as_view(url='/login/', permanent=True)),
     url(r'^$', RedirectView.as_view(url='/login/', permanent=True)),
 

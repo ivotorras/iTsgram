@@ -67,7 +67,7 @@ document.onmousedown = right;
 
     
     {% block content %}
-  <form method="post" action="{% url 'subir' %}" enctype="multipart/form-data">
+  <form method="post"  enctype="multipart/form-data">
     {% csrf_token %}
     <input type="file" name="uplo">
     <button type="submit">Upload</button>
