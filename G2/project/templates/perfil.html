@@ -1,0 +1,298 @@
+<html>
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="botones.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+
+  
+    
+    <title>iTsgram</title>
+<body>
+  <!--  
+<body oncontextmenu='return false' onkeydown='return false' ondragstart="return false;">    
+
+
+    <script language="Javascript">
+   document.oncontextmenu = function() {
+      return false
+   }
+   function right(e) {
+      var msg = "Prohibido usar Click Derecho! ";
+      if (navigator.appName == 'Netscape' && e.which == 3) {
+         alert(msg); //- Si no quieres asustar a tu usuario entonces quita esta linea...
+         return false;
+      }
+      else if (navigator.appName == 'Microsoft Internet Explorer' && event.button==2) {
+         alert(msg); //- Si no quieres asustar al usuario que utiliza IE,  entonces quita esta linea...
+                        //- Aunque realmente se lo merezca...
+      return false;
+      }
+   return true;
+}
+document.onmousedown = right;
+</script>
+    
+    -->
+    
+ <div class="navbar-fixed">
+    <nav>
+    <div class="nav-wrapper">        
+        
+      <a href="http://127.0.0.1:8000/home/" class="brand-logo right"><img src="/static/images/logo.png" width="205" height="60"></a>
+  <a href="#" data-activates="slide-out" class="aaa"><i class="material-icons">menu</i></a>
+     
+    </div>
+  </nav>
+  </div>
+  
+
+      
+   <div class="container">
+    <table class="centered">
+        <tbody>
+          <tr>
+            <td><input class="modal-trigger" type=image src='/static/images/1.jpg' width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/2.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/3.jpg" width="350" height="200" href="#modal1"></td>
+          </tr>
+          <tr>
+            <td><input class="modal-trigger" type=image src="/static/images/4.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/5.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/6.jpg" width="350" height="200" href="#modal1"></td>
+          </tr>
+          <tr>
+            <td><input class="modal-trigger" type=image src="/static/images/7.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/8.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/9.jpg" width="350" height="200" href="#modal1"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    
+    
+    
+
+  <!-- Modal Structure -->
+    
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+    <div align = "center"> 
+        <input class="centered modal-1" type=image id="modal1" width="350" height="200">
+        </div>    
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+        <div class="collapsible-header"><a class="btn tooltipped" data-position="top" data-delay="10" data-tooltip="Comments"><i class="material-icons">chat_bubble_outline</i></a></div>
+
+   
+      <div class="collapsible-body">
+          
+          
+          
+            <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a href="#test1">Test 1</a></li>
+        <li class="tab col s3"><a class="active" href="#test2">Test 2</a></li>
+      </ul>
+    </div>
+  </div>
+      
+     </div>
+    </li>    
+  </ul>         
+    </div>
+    </div>         
+    <script>
+    
+    
+    
+     $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+         $('.modal-trigger').click(function(e){
+             $('.modal-1').attr('src',$(this).attr('src')) ;
+         })
+  });
+    
+    
+      $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
+   
+        
+        
+        
+      $(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+  });    
+    
+    </script>
+    
+    
+    <div>  
+        <ul id="slide-out" class="side-nav">
+    <li><div class="userView">
+<!--      <img class="background" src="/static/images/2.jpg">-->
+      <a href="#!user"><img class="circle" class="responsive-img" src="/static/images/1.jpg"></a>
+      <a href="#!name"><span class="white-text name">{{ user.username }}</span></a>  
+      <a href="#!email"><span class="white-text email">{{ user.email }}</span></a>
+    </div></li>
+    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+    <li><a href="#!">Second Link</a></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>   
+    <li><a class="subheader">Favoritos</a></li>
+    <li><a class="waves-effect">Cheru</a></li>
+    <li><a class="waves-effect">Ivo</a></li>
+    <li><a class="waves-effect">Enano</a></li>
+    <li><a class="waves-effect">Huevo</a></li>        
+    <li><div class="divider"></div></li>       
+    <button class="waves-effect waves-teal btn-flat" type="button" onclick="window.location.href='/logout/' ">Logout</button>
+    <button class="waves-effect waves-teal btn-flat" type="button" href="#modal2">New Pic</button>  
+            
+
+
+  <!-- Modal Structure -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>        
+          
+  </ul>
+
+    </div> 
+    
+</body> 
+    
+     <script>
+        $( document ).ready(function() {
+        $(".aaa").sideNav();
+            
+});
+    </script>
+    
+<style>    
+
+ 
+    
+.btn, .btn-large {
+  text-decoration: none;
+  color: #000 !important;
+  background-color: transparent;
+  text-align: center;
+  letter-spacing: .5px;
+  transition: .2s ease-out;
+  cursor: pointer;
+}    
+    
+.btn:hover, .btn-large:hover {
+  background-color: transparent;
+}    
+    
+    
+    
+.backdrop {
+  background-color: #607D8B;
+  color: black;    
+
+
+}
+    
+    
+    
+.nav-wrapper{
+    background-color: #78909C !important;
+}
+    
+    
+.page-footer{
+    background-color: #546E7A !important;   
+}
+    
+    
+.collapsible-header {
+  border-bottom: 1px transparent !important;
+  background-color: transparent;    
+}
+    
+    
+.collapsible-body {
+  border-bottom: 1px transparent !important;
+
+}    
+    
+.collapsible {
+  border-top: 0px solid #fff !important;
+  border-right: 0px solid #fff !important;
+  border-left: 0px solid #fff !important;
+  margin: 1rem 0 1rem 0 !important;
+}  
+   
+.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
+  box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0) !important;
+}     
+   
+.collapsible-header i {
+  width: 5px !important;
+    }
+
+    
+.collapsible-header i {
+
+  margin-right: 2rem !important;
+}    
+
+    
+    
+</style>
+ 
+
+    
+    
+        <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2016 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
+    
+    
+</html>
+
+
+
+
+
+
+
+{% endblock %}
