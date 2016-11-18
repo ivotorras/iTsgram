@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 #views.py
-from login.forms import DocumentForm
+from login.forms import DocumentForm, RegistrationForm
 from login.models import Document
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
