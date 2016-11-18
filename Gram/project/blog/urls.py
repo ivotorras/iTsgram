@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^subir/$', subir , name="subir" ),
     url(r'^home/$', home),
-    url(r'^register/$', register),
+    url(r'^register/$', register , name="register"),
     url(r'^register/success/$', register_success),
     url(r'^login/$', 'django.contrib.auth.views.login'),
     url(r'^logout/$', logout_page),
