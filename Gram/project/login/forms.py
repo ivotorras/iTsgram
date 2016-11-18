@@ -27,7 +27,10 @@ class RegistrationForm(forms.Form):
 
     
 
-class DocumentForm(forms.ModelForm):
-    class Meta:
-        model = Document
-        fields = ('description', 'document', )
+class DocumentForm(forms.Form):
+	docfile = forms.FileField(
+        label='Select a file'
+    )
+   # class Meta:
+    #    model = Document
+     #   fields = ('docfile', )

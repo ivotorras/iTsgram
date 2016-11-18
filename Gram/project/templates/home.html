@@ -66,16 +66,8 @@ document.onmousedown = right;
 
 
     
-    {% block content %}
-  <form method="post"  enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="file" name="uplo">
-    <button type="submit">Upload</button>
-  </form>
-
+{% block content %}
   {% if uploaded_file_url %}
-    <p><img id="imagen" src="{{ document.docfile.url }}"/></p>
-  
             <ul>
                 {% for document in documents %}
                     <li><img id="imagen" src="{{ document.docfile.url }}"/></li>
@@ -87,10 +79,19 @@ document.onmousedown = right;
         			</form>		
                 {% endfor %}
             </ul>
-        {% else %}
+    {% else %}
             <p>No documents.</p>
-        {% endif %}
-
+    {% endif %}
+        <form action="{% url 'perfil' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>{{ form.non_field_errors }}</p>
+        <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+        <p>
+            {{ form.docfile.errors }}
+            {{ form.docfile }}
+        </p>
+        <p><input type="submit" value="Upload"/></p>
+    </form>
 {% endblock %}
 
        

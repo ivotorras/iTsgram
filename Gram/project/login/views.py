@@ -2,7 +2,8 @@ from django.shortcuts import render
 
 # Create your views here.
 #views.py
-from login.forms import *
+from login.forms import DocumentForm
+from login.models import Document
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_protect
@@ -12,6 +13,7 @@ from django.template import RequestContext
 from django.shortcuts import render
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
+from django.core.urlresolvers import reverse
 
 @csrf_protect
 def register(request):
@@ -48,21 +50,21 @@ def logout_page(request):
 def home(request):
     context  = RequestContext(request)
     context['user'] = request.user
-    if request.method == 'POST':
-        print 'asd --->', request.FILES
-        uplo = request.FILES['uplo']
-        fs = FileSystemStorage()
-        filename = fs.save(uplo.name, uplo)
-        uploaded_file_url = fs.url(filename)
-        return render(request, 'home.html', {
-            'uploaded_file_url': uploaded_file_url
-        })
+    #if request.method == 'POST':
+     #   print 'asd --->', request.FILES
+    #    uplo = request.FILES['uplo']
+    #    fs = FileSystemStorage()
+     #   filename = fs.save(uplo.name, uplo)
+    #    uploaded_file_url = fs.url(filename)
+     #   return render(request, 'home.html', {
+    #       'uploaded_file_url': uploaded_file_url
+    #    })
     return render_to_response(
     'home.html',context
     )
 
 
-
+@login_required
 def subir(request):
     # Handle file upload
     if request.method == 'POST':
