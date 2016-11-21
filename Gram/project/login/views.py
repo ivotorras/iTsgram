@@ -20,6 +20,9 @@ from django.core.urlresolvers import reverse
 from login.models import Publisher
 
 
+from django.contrib.auth.models import User
+
+
 @csrf_protect
 def register(request):
     if request.method == 'POST':
@@ -114,13 +117,13 @@ def search(request):
     query = request.GET.get('q', '')
     if query:
         qset = (
-            Q(name__icontains=query) 
+            Q(username__contains=query) 
         )
-        results = Publisher.objects.filter(qset)
+        results = User.objects.filter(qset)
         print (results)
     else:
         results = []
-    return render_to_response("home.html", {
+    return render_to_response("search.html", {
         "results": results,
         "query": query
     })

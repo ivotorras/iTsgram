@@ -1,3 +1,6 @@
+{% load staticfiles %}
+{% block head %}
+
 <html>
     
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -5,142 +8,102 @@
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="botones.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
-
-  
-    
+   
     <title>iTsgram</title>
 <body>
-  <!--  
-<body oncontextmenu='return false' onkeydown='return false' ondragstart="return false;">    
 
 
-    <script language="Javascript">
-   document.oncontextmenu = function() {
-      return false
-   }
-   function right(e) {
-      var msg = "Prohibido usar Click Derecho! ";
-      if (navigator.appName == 'Netscape' && e.which == 3) {
-         alert(msg); //- Si no quieres asustar a tu usuario entonces quita esta linea...
-         return false;
-      }
-      else if (navigator.appName == 'Microsoft Internet Explorer' && event.button==2) {
-         alert(msg); //- Si no quieres asustar al usuario que utiliza IE,  entonces quita esta linea...
-                        //- Aunque realmente se lo merezca...
-      return false;
-      }
-   return true;
-}
-document.onmousedown = right;
-</script>
-    
-    -->
-    
-
-    
- <div class="navbar-fixed">
     <nav>
-    <div class="nav-wrapper">        
- 
+    <div class="nav-wrapper">
       <a href="http://127.0.0.1:8000/home/" class="brand-logo right"><img src="/static/images/logo.png" width="205" height="60"></a>
-        <ul id="nav-mobile" class="left hide-on-med-and-down">
-  <a href="#" data-activates="slide-out" class="aaa"><i class="material-icons">menu</i></a>
-        </ul>
-  
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><a href="#" data-activates="slide-out" class="aaa"><i class="material-icons">menu</i></a></li>
+      </ul>
+    <form name="fo" action="" method="GET">
+        <div class="row">
+        <div class="col l4 offset-l3">
+        <div class="input-field">
+          <input maxlength="30" id="text" type="search" name="q" value="{{ query|escape }}" required >
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div></div></div>
+      </form>      
     </div>
-  </nav>
-  </div>
-  <BR></BR>   
-    
-     <div class="row">
-        <div class="col s10 offset-s1">
-          <div class="card white">
-            <div class="card-content white-text">
-              <span class="card-title">Mi Perfil</span>
+  </nav>      
 
-        
-    <div class="center-align">
-        <a class="foto"><input type=image class="circle" src='/static/images/perfil.png' width="200" height="200"></a>  <BR></BR>  
     
+<!--
     
-    <div class="center-align">
-        <font size = 5 face="Roboto" color = "red">{{ user.username }}</font><br>
-        <a class="perfil">{{ user.email }}</a><br>
+      <div class="row">
+        <div class="col s3 offset-s1">
+          <div class="card orange lighten-2">
+            <div class="card-content black-text">
+              <span class="card-title">Resultados</span>
 
-    </div>
-   </div>
+
                 
+-->
+                
+            
+<BR></BR>  
+ 
+  {% if query %}
+        <h2></h2>
+ 
+    {% if results %}
+      <ul>
+      {% for name in results %}
+          
+          
+          
+           <div class="row">
+        <div class="col s3 offset-s1">
+          <div class="card orange lighten-1">
+            <div class="card-content black-text">
+          
+          
+          
+          
+        <li><font size = 5 face="Roboto" color = "black" href="">{{ name.username|escape }}</font></li>
+        <li><font size = 3 face="Roboto" color = "black" href="">{{ name.email|escape }}</font></li> 
+                
+                
+                
+        
             </div>
 
           </div>
         </div>
       </div>
-    
-    
+        
                 
                 
-                
-    
-   <div class="row center">
-    <table class="centered">
-        <tbody>
-          <tr>
-            <td><input class="modal-trigger" type=image src='/static/images/1.jpg' width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/2.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/3.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-          <tr>
-            <td><input class="modal-trigger" type=image src="/static/images/4.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/5.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/6.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-          <tr>
-            <td><input class="modal-trigger" type=image src="/static/images/7.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/8.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/9.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    
-    
-    
-
-  <!-- Modal Structure -->
-    
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-    <div align = "center"> 
-        <input class="centered modal-1" type=image id="modal1" width="350" height="200">
-        </div>    
-  <ul class="collapsible" data-collapsible="accordion">
-    <li>
-        <div class="collapsible-header"><a class="btn tooltipped" data-position="top" data-delay="10" data-tooltip="Comments"><i class="material-icons">chat_bubble_outline</i></a></div>
-
-   
-      <div class="collapsible-body">
-          
-          
-          
-            <div class="row">
-    <div class="col s12">
-      <ul class="tabs">
-        <li class="tab col s3"><a href="#test1">Test 1</a></li>
-        <li class="tab col s3"><a class="active" href="#test2">Test 2</a></li>
+      {% endfor %}
       </ul>
-    </div>
-  </div>
-      
-     </div>
-    </li>    
-  </ul>         
-    </div>
-    </div>         
+    {% else %}
+      <p>No person found</p>
+    {% endif %}
+  {% endif %}
+                
+                
+                
+                
+  
+<!--
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+-->
+
+  
+
     <script>
     
     
@@ -175,10 +138,11 @@ document.onmousedown = right;
     <li><div class="userView">
 <!--      <img class="background" src="/static/images/2.jpg">-->
       <a href="#!user"><img class="circle" class="responsive-img" src="/static/images/perfil.png"></a>
-      <a href="#!name"><span class="white-text name">{{ user.username }}</span></a>  
-      <a href="#!email"><span class="white-text email">{{ user.email }}</span></a>
+      <a href="#!name"><span class="black-text name">{{ user.username }}</span></a>  
+      <a href="#!email"><span class="black-text email">{{ user.email }}</span></a>
     </div></li>
-    <li><a href="../"><i class="material-icons">view_module</i>Home</a></li>   
+    <li><a href="/home/perfil/"   ><i class="material-icons">perm_identity</i>Perfil</a></li> 
+    <li><a href="/home/"><i class="material-icons">view_module</i>Home</a></li>         
     <li><a class="subheader">Favoritos</a></li>
     <li><a class="waves-effect">Cheru</a></li>
     <li><a class="waves-effect">Ivo</a></li>
@@ -186,7 +150,7 @@ document.onmousedown = right;
     <li><a class="waves-effect">Huevo</a></li>        
     <li><div class="divider"></div></li>       
     <button class="waves-effect waves-teal btn-flat" type="button" onclick="window.location.href='/logout/' ">Logout</button>
-
+       
             
 
 
@@ -199,8 +163,7 @@ document.onmousedown = right;
     <div class="modal-footer">
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
-  </div>        
-          
+  </div>                   
   </ul>
 
     </div> 
@@ -215,8 +178,27 @@ document.onmousedown = right;
     </script>
     
 <style>    
+    
+    
+.collapsible-body p {
+    margin: 0;
+    padding: 0.5rem;
+}
+    
+    
+.modal {
+   max-height: 90%;
+   height: 500px;      
+   width: 800px;
+    
+    
+}    
 
- 
+ .side-nav .userView .circle {
+    height: 150px;
+    width: 150px;
+}
+
     
 .btn, .btn-large {
   text-decoration: none;
@@ -237,11 +219,14 @@ document.onmousedown = right;
 .backdrop {
   background-color: #607D8B;
   color: black;    
+
+
 }
     
     
+    
 .nav-wrapper{
-    background-color: #1976D2 !important;
+    background-color:#1976D2 !important;
 }
     
     
@@ -281,27 +266,14 @@ document.onmousedown = right;
 
   margin-right: 2rem !important;
 }    
-    
-.info{
-position:relative !important;
- top:-150px !important;
- left:225px !important;
-}
 
-.foto{
-    width: 50px !important
-}
-.perfil{
-    font-size: 20px;
-  
-}    
+    
     
 </style>
  
 
     
-    
-        <footer class="page-footer">
+        <footer class="page-footer" style="bottom:0px;">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
@@ -319,6 +291,7 @@ position:relative !important;
           <div class="footer-copyright">
             <div class="container">
             © 2016 Copyright 
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
             </div>
           </div>
         </footer>
@@ -330,3 +303,6 @@ position:relative !important;
 
 
 
+
+
+{% endblock %}

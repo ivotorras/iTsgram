@@ -8,7 +8,7 @@
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="botones.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
@@ -47,11 +47,11 @@ document.onmousedown = right;
       <ul id="nav-mobile" class="left hide-on-med-and-down">
           <li><a href="#" data-activates="slide-out" class="aaa"><i class="material-icons">menu</i></a></li>
       </ul>
-    <form name="fo" action="." method="GET">
+    <form name="fo" action="/home/search/" method="GET">
         <div class="row">
-        <div class="col l4 offset-l4">
+        <div class="col l4 offset-l3">
         <div class="input-field">
-          <input maxlength="30" id="text" type="search" name="q" value="{{ query|escape }}" required >
+          <input maxlength="30" id="text"  type="search" name="q" value="{{ query|escape }}" required >
           <label for="search"><i class="material-icons">search</i></label>
           <i class="material-icons">close</i>
         </div></div></div>
@@ -59,53 +59,12 @@ document.onmousedown = right;
     </div>
   </nav>      
 
-    
-    
-      <div class="row">
-        <div class="col s10 offset-s1">
-          <div class="card white">
-            <div class="card-content black-text">
-              <span class="card-title">Resultado</span>
 
 
                 
                 
                 
-                                
-                
-    <form name="fo" action="/search/" method="GET">
-      <label for="q">Search: </label>
-      <input maxlength="30" type="text" name="q" value="{{ query|escape }}" required="">
-      <input type="submit" value="Search">
 
-  </form>
- 
-  {% if query %}
-    <h2>Results for "{{ query|escape }}":</h2>
- 
-    {% if results %}
-      <ul>
-      {% for name in results %}
-        <li><a href="">{{ name|escape }}</a></li>
-      {% endfor %}
-      </ul>
-    {% else %}
-      <p>No person found</p>
-    {% endif %}
-  {% endif %}
-                
-                
-                
-                
-  
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-<!--
--------------------------------------------------------------------------------------------------------> 
    
 {% block content %}
   {% if uploaded_file_url %}
@@ -131,16 +90,17 @@ document.onmousedown = right;
             {{ form.docfile.errors }}
             {{ form.docfile }}
         </p>
-        <p><input type="submit" value="Upload"/></p>
+        <a class="btn-floating btn-large waves-effect waves-light red" type="submit"><i class="material-icons">add</i></a>    
+            
+            
     </form>
 {% endblock %}
 
-       
-<!--
--------------------------------------------------------------------------------------------------------> 
+********************************       
+
     
       
-<!--   <div class="container">
+  <div class="container">
     <table class="centered">
         <tbody>
           <tr>
@@ -160,7 +120,7 @@ document.onmousedown = right;
           </tr>
         </tbody>
       </table>
-    </div>-->
+    </div>
 
     
         
@@ -168,7 +128,7 @@ document.onmousedown = right;
 
   <!-- Modal Structure -->
     
-<!--  <div id="modal1" class="modal">
+  <div id="modal1" class="modal">
     <div class="modal-content">
     <div align = "center"> 
         <input class="centered modal-1" type=image id="modal1" width="565" height="340">
@@ -183,25 +143,27 @@ document.onmousedown = right;
           
         <p><b> User1: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac porttitor arcu.</p>
         <p><b> User2: </b>Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim mauris.Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim maurisNam nisi odio.</p> 
-        <p><b> User3: </b>Pellentesque tempor ullamcorper dapibus. Phasellus tristique fringilla nibh. Cras bibendum non tortor id congue. Nullam consequat magna at interdum tempus.</p>     -->     
-<!--
-            <div class="row">
-    <div class="col s12">
-      <ul class="tabs">
-        <li class="tab col s3"><a href="#test1">Test 1</a></li>
-        <li class="tab col s3"><a class="active" href="#test2">Test 2</a></li>
-      </ul>
-    </div>
-  </div>
+        <p><b> User3: </b>Pellentesque tempor ullamcorper dapibus. Phasellus tristique fringilla nibh. Cras bibendum non tortor id congue. Nullam consequat magna at interdum tempus.</p>          
 
-      
+  
      </div>
     </li>    
   </ul>         
     </div>
     </div>   
--->
 
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+***************************************
     <script>
     
     
@@ -235,7 +197,7 @@ document.onmousedown = right;
         <ul id="slide-out" class="side-nav">
     <li><div class="userView">
 <!--      <img class="background" src="/static/images/2.jpg">-->
-      <a href="#!user"><img class="circle" class="responsive-img" src="/static/images/1.jpg"></a>
+      <a href="#!user"><img class="circle" class="responsive-img" src="/static/images/perfil.png"></a>
       <a href="#!name"><span class="black-text name">{{ user.username }}</span></a>  
       <a href="#!email"><span class="black-text email">{{ user.email }}</span></a>
     </div></li>
@@ -247,7 +209,7 @@ document.onmousedown = right;
     <li><a class="waves-effect">Huevo</a></li>        
     <li><div class="divider"></div></li>       
     <button class="waves-effect waves-teal btn-flat" type="button" onclick="window.location.href='/logout/' ">Logout</button>
-    <button class="waves-effect waves-teal btn-flat" type="button" href="#modal2">New Pic</button>        
+        
             
 
 
@@ -331,26 +293,8 @@ document.onmousedown = right;
     background-color: #0D47A1 !important;   
 }
     
-    
-.collapsible-header {
-  border-bottom: 1px transparent !important;
-  background-color: transparent;    
-}
-    
-    
-.collapsible-body {
-  border-bottom: 1px transparent !important;
-
-}    
-    
-.collapsible {
-  border-top: 0px solid #fff !important;
-  border-right: 0px solid #fff !important;
-  border-left: 0px solid #fff !important;
-  margin: 1rem 0 1rem 0 !important;
-}  
-   
-.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
+       
+.btn{
   box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0) !important;
 }     
    
@@ -370,8 +314,7 @@ document.onmousedown = right;
  
 
     
-    
-        <footer class="page-footer">
+        <footer class="page-footer" style="bottom:0px;">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">

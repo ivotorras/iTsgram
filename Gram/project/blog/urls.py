@@ -18,7 +18,7 @@ urlpatterns = [
 	url(r'^home/perfil/$', perfil , name="perfil"),
     url(r'^myapp/list/$', RedirectView.as_view(url='/login/', permanent=True)),
     url(r'^$', RedirectView.as_view(url='/login/', permanent=True)),
-    url(r'^search/', 'login.views.search'),
+    url(r'^home/search/', 'login.views.search'),
 
 
 ]
