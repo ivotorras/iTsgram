@@ -1,5 +1,5 @@
 
-from django.conf.urls import url, include
+from django.conf.urls import url, include, patterns
 from django.contrib import admin
 from login.views import *
 from login.views import subir
@@ -13,12 +13,13 @@ urlpatterns = [
     url(r'^home/$', home),
     url(r'^register/$', register),
     url(r'^register/success/$', register_success),
-    url(r'^login/$', 'django.contrib.auth.views.login'),
+#    url(r'^login/$', 'django.contrib.auth.views.login'),
     url(r'^logout/$', logout_page),
-    url(r'^perfil/$','django.contrib.auth.perfil'),
+  #  url(r'^perfil/$','django.contrib.auth.perfil'),
 	url(r'^home/perfil/$', perfil , name="perfil"),
     url(r'^myapp/list/$', RedirectView.as_view(url='/login/', permanent=True)),
     url(r'^$', RedirectView.as_view(url='/login/', permanent=True)),
+    url(r'^', include('barra.urls')),
 
 ]
 if settings.DEBUG:

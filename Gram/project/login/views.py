@@ -1,8 +1,7 @@
-from django.shortcuts import render
-
 # Create your views here.
 #views.py
-from login.forms import DocumentForm
+from django.http import HttpResponseRedirect, HttpResponse
+from login.forms import DocumentForm, RegistrationForm
 from login.models import Document
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
@@ -15,7 +14,50 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.core.urlresolvers import reverse
 
+
+from django.db.models import Q
+from django.http import HttpResponse
+
+
+
 @csrf_protect
+
+
+
+
+
+def search(request):
+    query = request.GET.get('q', '')
+    if query:
+        qset = (
+            Q(name__icontains=query) 
+        )
+        results = Publisher.objects.filter(qset)
+        print(results)
+    else:
+        results = []
+    return render_to_response("publisher.html", {
+        "results": results,
+        "query": query
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)

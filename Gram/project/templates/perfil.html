@@ -40,29 +40,51 @@ document.onmousedown = right;
     
     -->
     
+
+    
  <div class="navbar-fixed">
     <nav>
     <div class="nav-wrapper">        
-        
+ 
       <a href="http://127.0.0.1:8000/home/" class="brand-logo right"><img src="/static/images/logo.png" width="205" height="60"></a>
   <a href="#" data-activates="slide-out" class="aaa"><i class="material-icons">menu</i></a>
      
+  
     </div>
   </nav>
   </div>
-  
-    <div>
-        <a class="foto"><input type=image class="circle" src='/static/images/1.jpg' width="200" height="200"></a>    
-    </div>
+  <BR></BR>   
     
-    <div class="info">
-        <a class="perfil">{{ user.username }}</a><br>
+     <div class="row">
+        <div class="col s10 offset-s1">
+          <div class="card white">
+            <div class="card-content white-text">
+              <span class="card-title">Mi Perfil</span>
+
+        
+    <div class="center-align">
+        <a class="foto"><input type=image class="circle" src='/static/images/perfil.png' width="200" height="200"></a>  <BR></BR>  
+    
+    
+    <div class="center-align">
+        <font size = 5 face="Roboto" color = "red">{{ user.username }}</font><br>
         <a class="perfil">{{ user.email }}</a><br>
-        <a class="perfil">BETA (CERRADA)</a>
+
     </div>
-   
+   </div>
+                
+            </div>
+
+          </div>
+        </div>
+      </div>
     
-   <div class="container">
+    
+                
+                
+                
+    
+   <div class="row center">
     <table class="centered">
         <tbody>
           <tr>
@@ -151,7 +173,7 @@ document.onmousedown = right;
         <ul id="slide-out" class="side-nav">
     <li><div class="userView">
 <!--      <img class="background" src="/static/images/2.jpg">-->
-      <a href="#!user"><img class="circle" class="responsive-img" src="/static/images/1.jpg"></a>
+      <a href="#!user"><img class="circle" class="responsive-img" src="/static/images/perfil.png"></a>
       <a href="#!name"><span class="white-text name">{{ user.username }}</span></a>  
       <a href="#!email"><span class="white-text email">{{ user.email }}</span></a>
     </div></li>
@@ -163,7 +185,7 @@ document.onmousedown = right;
     <li><a class="waves-effect">Huevo</a></li>        
     <li><div class="divider"></div></li>       
     <button class="waves-effect waves-teal btn-flat" type="button" onclick="window.location.href='/logout/' ">Logout</button>
-    <button class="waves-effect waves-teal btn-flat" type="button" href="#modal2">New Pic</button>  
+
             
 
 
@@ -214,10 +236,7 @@ document.onmousedown = right;
 .backdrop {
   background-color: #607D8B;
   color: black;    
-
-
 }
-    
     
     
 .nav-wrapper{
@@ -273,6 +292,7 @@ position:relative !important;
 }
 .perfil{
     font-size: 20px;
+  
 }    
     
 </style>
@@ -298,7 +318,6 @@ position:relative !important;
           <div class="footer-copyright">
             <div class="container">
             © 2016 Copyright 
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
             </div>
           </div>
         </footer>
