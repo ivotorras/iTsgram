@@ -92,7 +92,7 @@ document.onmousedown = right;
             {{ form.docfile.errors }}
             {{ form.docfile }}
         </p>
-        <a class="btn-floating btn-large waves-effect waves-light red mynigga" type="submit"><i class="material-icons">camera</i></a>    
+        <a class="btn-floating btn-large waves-effect waves-light red btnfoto" type="submit"><i class="material-icons">camera</i></a>    
             
             
     </form>
@@ -177,8 +177,7 @@ document.onmousedown = right;
   });    
     
     </script>
-    
- <div style="background-color:red; height:1000px; width:20px;"></div>   
+       
     <div>  
         <ul id="slide-out" class="side-nav">
     <li><div class="userView">
@@ -187,27 +186,19 @@ document.onmousedown = right;
       <a href="#!name"><span class="black-text name">{{ user.username }}</span></a>  
       <a href="#!email"><span class="black-text email">{{ user.email }}</span></a>
     </div></li>
-    <li><a href="perfil/"  ><i class="material-icons">perm_identity</i>Perfil</a></li> 
+            
+    <li><a href="perfil/"  ><i class="material-icons">perm_identity</i>Perfil</a></li>          
+    <li><a type="submit" onclick="window.location.href='/logout/' "><i class="material-icons">settings_power</i>Logout</a> </li>   
+   
+     <li><div class="divider"></div></li>     
     <li><a class="subheader">Favoritos</a></li>
     <li><a class="waves-effect">Cheru</a></li>
     <li><a class="waves-effect">Ivo</a></li>
     <li><a class="waves-effect">Enano</a></li>
-    <li><a class="waves-effect">Huevo</a></li>        
-    <li><div class="divider"></div></li>       
-    <button class="waves-effect waves-teal btn-flat" type="button" onclick="window.location.href='/logout/' ">Logout</button>
-
+    <li><a class="waves-effect">Huevo</a></li> 
             
             
-  <!-- Modal Structure -->
-  <div id="modal2" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>                   
+                  
   </ul>
 
     </div> 
@@ -220,7 +211,9 @@ document.onmousedown = right;
         });
     </script>
     
-<style>    
+<style> 
+    
+
 .radio{
     border-radius: 3px !important;
 }    
@@ -277,10 +270,10 @@ document.onmousedown = right;
   margin-right: 2rem !important;
 }    
 
-    .mynigga{
-        bottom: 15;
-        margin-left: 49%;
-        position: fixed;
+.btnfoto{
+    bottom: 15;
+    margin-left: 49%;
+    position: fixed;
     }
 </style>
     
