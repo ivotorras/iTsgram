@@ -43,19 +43,21 @@ document.onmousedown = right;
 
     <nav>
     <div class="nav-wrapper">
-      <a href="http://127.0.0.1:8000/home/" class="brand-logo right"><img src="/static/images/logo.png" width="205" height="60"></a>
+      <a href="http://127.0.0.1:8000/home/" class="brand-logo right"><img src="/static/images/logos.png" height="50" style="margin-top:6px;"></a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
           <li><a href="#" data-activates="slide-out" class="aaa"><i class="material-icons">menu</i></a></li>
       </ul>
-    <form name="fo" action="/home/search/" method="GET">
+
+          <form name="fo" action="/home/search/" method="GET">
         <div class="row">
-        <div class="col l4 offset-l3">
-        <div class="input-field">
-          <input maxlength="30" id="text"  type="search" name="q" value="{{ query|escape }}" required >
-          <label for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
+        <div class="col l5 offset-l3">
+        <div class="input-field radio" style="height: 80%; margin-top:6px;">
+          <input class="radio blue" maxlength="30" id="text" placeholder="Buscar" type="search" name="q" value="{{ query|escape }}" required >
+          <label for="search"><i class="material-icons" style="margin-top:-5px;">search</i></label>
+          <i class="material-icons" style="margin-top:-5px;" >close</i>
         </div></div></div>
-      </form>      
+      </form>
+        
     </div>
   </nav>      
 
@@ -90,16 +92,14 @@ document.onmousedown = right;
             {{ form.docfile.errors }}
             {{ form.docfile }}
         </p>
-        <a class="btn-floating btn-large waves-effect waves-light red" type="submit"><i class="material-icons">add</i></a>    
+        <a class="btn-floating btn-large waves-effect waves-light red mynigga" type="submit"><i class="material-icons">camera</i></a>    
             
             
     </form>
 {% endblock %}
 
-********************************       
+<!--
 
-    
-      
   <div class="container">
     <table class="centered">
         <tbody>
@@ -126,7 +126,7 @@ document.onmousedown = right;
         
     
 
-  <!-- Modal Structure -->
+   Modal Structure 
     
   <div id="modal1" class="modal">
     <div class="modal-content">
@@ -153,20 +153,10 @@ document.onmousedown = right;
     </div>   
 
 
+-->
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-***************************************
+
     <script>
-    
-    
     
      $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
@@ -175,24 +165,20 @@ document.onmousedown = right;
              $('.modal-1').attr('src',$(this).attr('src')) ;
          })
   });
-    
-    
+ 
       $(document).ready(function(){
     $('.collapsible').collapsible({
       accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
   });
-   
-        
-        
-        
+      
       $(document).ready(function(){
     $('.tooltipped').tooltip({delay: 50});
   });    
     
     </script>
     
-    
+ <div style="background-color:red; height:1000px; width:20px;"></div>   
     <div>  
         <ul id="slide-out" class="side-nav">
     <li><div class="userView">
@@ -209,10 +195,9 @@ document.onmousedown = right;
     <li><a class="waves-effect">Huevo</a></li>        
     <li><div class="divider"></div></li>       
     <button class="waves-effect waves-teal btn-flat" type="button" onclick="window.location.href='/logout/' ">Logout</button>
-        
+
             
-
-
+            
   <!-- Modal Structure -->
   <div id="modal2" class="modal">
     <div class="modal-content">
@@ -232,33 +217,24 @@ document.onmousedown = right;
      <script>
         $( document ).ready(function() {
         $(".aaa").sideNav();
-            
-});
+        });
     </script>
     
 <style>    
-    
+.radio{
+    border-radius: 3px !important;
+}    
     
 .collapsible-body p {
     margin: 0;
     padding: 0.5rem;
 }
-    
-    
-.modal {
-   max-height: 90%;
-   height: 500px;      
-   width: 800px;
-    
-    
-}    
-
+     
  .side-nav .userView .circle {
     height: 150px;
     width: 150px;
 }
-
-    
+ 
 .btn, .btn-large {
   text-decoration: none;
   color: #000 !important;
@@ -273,16 +249,11 @@ document.onmousedown = right;
   background-color: transparent;
 }    
     
-    
-    
+        
 .backdrop {
   background-color: #607D8B;
   color: black;    
-
-
-}
-    
-    
+}   
     
 .nav-wrapper{
     background-color:#1976D2 !important;
@@ -300,43 +271,18 @@ document.onmousedown = right;
    
 .collapsible-header i {
   width: 5px !important;
-    }
-
+}
     
 .collapsible-header i {
-
   margin-right: 2rem !important;
 }    
 
-    
-    
+    .mynigga{
+        bottom: 15;
+        margin-left: 49%;
+        position: fixed;
+    }
 </style>
- 
-
-    
-        <footer class="page-footer" style="bottom:0px;">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Descripcion</h5>
-                <p class="grey-text text-lighten-4">Este es un proyecto realizado por alumnos del ITS Villada.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="http://edu.itsvirtual.com.ar/">ITS Villada</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2016 Copyright 
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-            </div>
-          </div>
-        </footer>
-    
     
 </html>
 

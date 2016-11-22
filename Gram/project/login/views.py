@@ -104,15 +104,6 @@ def perfil(request):
     )
 
 
-
-
-
-
-
-
-
-
-
 def search(request):
     query = request.GET.get('q', '')
     if query:
@@ -120,11 +111,13 @@ def search(request):
             Q(username__contains=query) 
         )
         results = User.objects.filter(qset)
-        print (results)
+#        results = result.sorted(key = str.lower)
     else:
         results = []
+        
+
     return render_to_response("search.html", {
-        "results": results,
+        "results": results.order_by('username'),
         "query": query
     })
 
