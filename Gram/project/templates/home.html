@@ -2,22 +2,22 @@
 {% block head %}
 
 <html>
-<head>
+<head>    
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">  
     
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
    
     <title>iTsgram</title>
     
-<style> 
-.radio{
-    border-radius: 3px !important;
-}     
+    
+  <style> 
+    
 
 .radio{
     border-radius: 3px !important;
@@ -80,9 +80,10 @@
     margin-left: 49%;
     position: fixed;
     }
-</style>    
-</head>    
+</style>  
     
+    
+    </head>    
 <body>
   <!--  
 <body oncontextmenu='return false' onkeydown='return false' ondragstart="return false;">    
@@ -117,15 +118,15 @@ document.onmousedown = right;
           <li><a href="#" data-activates="slide-out" class="aaa"><i class="material-icons">menu</i></a></li>
       </ul>
 
-<form name="fo" action="/home/search/" method="GET">
+          <form name="fo" action="/home/search/" method="GET">
         <div class="row">
         <div class="col l5 offset-l3">
         <div class="input-field radio" style="height: 80%; margin-top:6px;">
-          <input  id="delit" class="radio blue" maxlength="30" id="text" placeholder="Buscar" type="search" name="q" value="{{ query|escape }}" required >
+          <input class="radio blue" maxlength="30" id="text" placeholder="Buscar" type="search" name="q" value="{{ query|escape }}" required >
           <label for="search"><i class="material-icons" style="margin-top:-5px;">search</i></label>
-          <i class="material-icons" style="margin-top:-5px;" onclick="delit()">close</i>
+          <i class="material-icons" style="margin-top:-5px;" >close</i>
         </div></div></div>
-      </form>     
+      </form>
         
     </div>
   </nav>      
@@ -136,13 +137,20 @@ document.onmousedown = right;
                 
                 
 
-   
+<!--   
 {% block content %}
-  {% if uploaded_file_url %}
+  {% if documents %}
             <ul>
                 {% for document in documents %}
-                    <li><img id="imagen" src="{{ document.docfile.url }}"/></li>
-					
+                    <a>{{ document.user }}</a>
+                    <a>{{ document.fecha }}</a>
+                    {% if documents %}
+                        <img id="imagen" src="{{ document.docfile.url }}"/>
+				    {% else %}
+                        
+                    {% endif %}
+                    <a>{{ document.description }}</a>	
+                
 					<form  method="post" enctype="multipart/form-data">
 						{% csrf_token %}
 						<input type="hidden" name="docfile" value="{{ document.pk }}" />
@@ -153,22 +161,69 @@ document.onmousedown = right;
     {% else %}
             <p>No documents.</p>
     {% endif %}
-        <form  method="post" enctype="multipart/form-data">
+       
+    
+    
+    
+        <form action="/home/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <p>{{ form.non_field_errors }}</p>
         <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
         <p>
             {{ form.docfile.errors }}
             {{ form.docfile }}
-        </p>           
+        </p>
+ 
+<p><button class="btn-floating btn-large waves-effect waves-light red btnfoto" type="submit" value="Unfollow"><i class="material-icons">camera</i></button></p>-->
             
-    </form>
-    <div class="btnfoto">
-    <a class="btn-floating btn-large waves-effect waves-light red" type="submit"><i class="material-icons">camera</i></a>
-    </div>
+            
+<!--EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD|-->          
+<a class="modal-trigger btn-floating btn-large waves-effect waves-light red btnfoto" href="#modal1"><i class="material-icons">camera</i></a>     
+            
 
-    
-    
+        
+ <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+        {% if documents %}
+            <ul>
+                {% for document in documents %}
+                    <a>{{ document.user }}</a>
+                    <a>{{ document.fecha }}</a>
+                    {% if documents %}
+                        <img id="imagen" src="{{ document.docfile.url }}"/>
+				    {% else %}
+                        
+                    {% endif %}
+                    <a>{{ document.description }}</a>	
+                
+					<form  method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+						<input type="hidden" name="docfile" value="{{ document.pk }}" />
+						<input type="submit" value="Delete" />
+        			</form>		
+                {% endfor %}
+            </ul>
+    {% else %}
+            <p>No documents.</p>
+    {% endif %}
+               
+         <form action="/home/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>{{ form.non_field_errors }}</p>
+        <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+        <p>
+            {{ form.docfile.errors }}
+            {{ form.docfile }}
+        </p>
+        </form> 
+    </div>
+    <div class="modal-footer">
+      <button class="btn-floating btn-large waves-effect waves-light" type="submit" value="Unfollow">Subir</button>
+    </div>
+  </div>
+      
+<!--HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD-->
 {% endblock %}
 
 <!--
@@ -216,7 +271,19 @@ document.onmousedown = right;
           
         <p><b> User1: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac porttitor arcu.</p>
         <p><b> User2: </b>Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim mauris.Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim maurisNam nisi odio.</p> 
+<<<<<<< HEAD
+        <p><b> User3: </b>Pellentesque tempor ullamcorper dapibus. Phasellus tristique fringilla nibh. Cras bibendum non tortor id congue. Nullam consequat magna at interdum tempus.</p>     
+            <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a href="#test1">Test 1</a></li>
+        <li class="tab col s3"><a class="active" href="#test2">Test 2</a></li>
+      </ul>
+    </div>
+  </div>
+=======
         <p><b> User3: </b>Pellentesque tempor ullamcorper dapibus. Phasellus tristique fringilla nibh. Cras bibendum non tortor id congue. Nullam consequat magna at interdum tempus.</p>          
+>>>>>>> 046114fe107927518e149ffcbfa820abb75d66c6
 
   
      </div>
@@ -225,16 +292,15 @@ document.onmousedown = right;
     </div>
     </div>   
 
+<<<<<<< HEAD
+=======
 
 -->
     
 
+
     <script>
     
-    function delit(){
-        document.getElementById("delit").value = "";
-    }        
-        
      $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
@@ -242,6 +308,7 @@ document.onmousedown = right;
              $('.modal-1').attr('src',$(this).attr('src')) ;
          })
   });
+
  
       $(document).ready(function(){
     $('.collapsible').collapsible({
@@ -253,7 +320,12 @@ document.onmousedown = right;
     $('.tooltipped').tooltip({delay: 50});
   });    
     
-    </script>
+
+     $( document ).ready(function() {
+        $(".aaa").sideNav();
+        });
+    </script>       
+
        
     <div>  
         <ul id="slide-out" class="side-nav">
@@ -273,8 +345,8 @@ document.onmousedown = right;
     <li><a class="waves-effect">Ivo</a></li>
     <li><a class="waves-effect">Enano</a></li>
     <li><a class="waves-effect">Huevo</a></li> 
-           
-                  
+            
+            
                   
   </ul>
 
@@ -282,11 +354,7 @@ document.onmousedown = right;
     
 </body> 
     
-     <script>
-        $( document ).ready(function() {
-        $(".aaa").sideNav();
-        });
-    </script>
+
     
 
     
