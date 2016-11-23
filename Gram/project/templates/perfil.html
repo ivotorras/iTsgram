@@ -40,45 +40,64 @@ document.onmousedown = right;
     
     -->
     
+
+    
  <div class="navbar-fixed">
     <nav>
     <div class="nav-wrapper">        
-        
-      <a href="http://127.0.0.1:8000/home/" class="brand-logo right"><img src="/static/images/logo.png" width="205" height="60"></a>
+ 
+      <a href="http://127.0.0.1:8000/home/" class="brand-logo right"><img src="/static/images/logos.png" height="50" style="margin-top:6.5px;"></a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
   <a href="#" data-activates="slide-out" class="aaa"><i class="material-icons">menu</i></a>
-     
+        </ul>
+  
     </div>
   </nav>
   </div>
-  
-    <div>
-        <a class="foto"><input type=image class="circle" src='/static/images/1.jpg' width="200" height="200"></a>    
-    </div>
+  <BR></BR>   
     
-    <div class="info">
-        <a class="perfil">{{ user.username }}</a><br>
+     <div class="row">
+        <div class="col s10 offset-s1">
+          <div class="card white">
+            <div class="card-content white-text">
+              <span class="card-title">Mi Perfil</span>
+
+        
+    <div class="center-align">
+        <a class="foto"><input type=image class="circle" src='/static/images/perfil.png' width="200" height="200"></a>  <BR></BR>  
+    
+    
+    <div class="center-align">
+        <font size = 5 face="Roboto" color = "red">{{ user.username }}</font><br>
         <a class="perfil">{{ user.email }}</a><br>
-        <a class="perfil">BETA (CERRADA)</a>
+
     </div>
-   
+   </div>
+                
+            </div>
+
+          </div>
+        </div>
+      </div>
     
-   <div class="container">
+    
+   <div class="row center">
     <table class="centered">
         <tbody>
           <tr>
-            <td><input class="modal-trigger" type=image src='/static/images/1.jpg' width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/2.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/3.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger z-depth-1" type=image src='/static/images/1.jpg' width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger z-depth-1" type=image src="/static/images/2.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger z-depth-1" type=image src="/static/images/3.jpg" width="350" height="200" href="#modal1"></td>
           </tr>
           <tr>
-            <td><input class="modal-trigger" type=image src="/static/images/4.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/5.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/6.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger z-depth-1" type=image src="/static/images/4.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger z-depth-1" type=image src="/static/images/5.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger z-depth-1" type=image src="/static/images/6.jpg" width="350" height="200" href="#modal1"></td>
           </tr>
           <tr>
-            <td><input class="modal-trigger" type=image src="/static/images/7.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/8.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/9.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger z-depth-1" type=image src="/static/images/7.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger z-depth-1" type=image src="/static/images/8.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger z-depth-1" type=image src="/static/images/9.jpg" width="350" height="200" href="#modal1"></td>
           </tr>
         </tbody>
       </table>
@@ -151,32 +170,22 @@ document.onmousedown = right;
         <ul id="slide-out" class="side-nav">
     <li><div class="userView">
 <!--      <img class="background" src="/static/images/2.jpg">-->
-      <a href="#!user"><img class="circle" class="responsive-img" src="/static/images/1.jpg"></a>
-      <a href="#!name"><span class="white-text name">{{ user.username }}</span></a>  
-      <a href="#!email"><span class="white-text email">{{ user.email }}</span></a>
+      <a href="#!user"><img class="circle" class="responsive-img" src="/static/images/perfil.png"></a>
+      <a href="#!name"><span class="black-text name">{{ user.username }}</span></a>  
+      <a href="#!email"><span class="black-text email">{{ user.email }}</span></a>
     </div></li>
-    <li><a href="../"><i class="material-icons">view_module</i>Home</a></li>   
+    <li><a href="../"><i class="material-icons">view_module</i>Home</a></li> 
+        
+     <li><a type="submit" onclick="window.location.href='/logout/' "><i class="material-icons">settings_power</i>Logout</a> </li>   
+   
+     <li><div class="divider"></div></li>            
     <li><a class="subheader">Favoritos</a></li>
     <li><a class="waves-effect">Cheru</a></li>
     <li><a class="waves-effect">Ivo</a></li>
     <li><a class="waves-effect">Enano</a></li>
     <li><a class="waves-effect">Huevo</a></li>        
     <li><div class="divider"></div></li>       
-    <button class="waves-effect waves-teal btn-flat" type="button" onclick="window.location.href='/logout/' ">Logout</button>
-    <button class="waves-effect waves-teal btn-flat" type="button" href="#modal2">New Pic</button>  
-            
-
-
-  <!-- Modal Structure -->
-  <div id="modal2" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>        
+       
           
   </ul>
 
@@ -192,9 +201,19 @@ document.onmousedown = right;
     </script>
     
 <style>    
-
- 
+<style>    
     
+    
+.collapsible-body p {
+    margin: 0;
+    padding: 0.5rem;
+}
+     
+ .side-nav .userView .circle {
+    height: 150px;
+    width: 150px;
+}
+ 
 .btn, .btn-large {
   text-decoration: none;
   color: #000 !important;
@@ -209,19 +228,14 @@ document.onmousedown = right;
   background-color: transparent;
 }    
     
-    
-    
+        
 .backdrop {
   background-color: #607D8B;
   color: black;    
-
-
-}
-    
-    
+}   
     
 .nav-wrapper{
-    background-color: #1976D2 !important;
+    background-color:#1976D2 !important;
 }
     
     
@@ -229,80 +243,22 @@ document.onmousedown = right;
     background-color: #0D47A1 !important;   
 }
     
-    
-.collapsible-header {
-  border-bottom: 1px transparent !important;
-  background-color: transparent;    
-}
-    
-    
-.collapsible-body {
-  border-bottom: 1px transparent !important;
-
-}    
-    
-.collapsible {
-  border-top: 0px solid #fff !important;
-  border-right: 0px solid #fff !important;
-  border-left: 0px solid #fff !important;
-  margin: 1rem 0 1rem 0 !important;
-}  
-   
-.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
+       
+.btn{
   box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0) !important;
 }     
    
 .collapsible-header i {
   width: 5px !important;
-    }
-
+}
     
 .collapsible-header i {
 
   margin-right: 2rem !important;
-}    
-    
-.info{
-position:relative !important;
- top:-150px !important;
- left:225px !important;
-}
-
-.foto{
-    width: 50px !important
-}
-.perfil{
-    font-size: 20px;
-}    
+} 
     
 </style>
- 
 
-    
-    
-        <footer class="page-footer">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Descripcion</h5>
-                <p class="grey-text text-lighten-4">Este es un proyecto realizado por alumnos del ITS Villada.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="http://edu.itsvirtual.com.ar/">ITS Villada</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2016 Copyright 
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-            </div>
-          </div>
-        </footer>
-    
     
 </html>
 

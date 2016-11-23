@@ -2,6 +2,10 @@ from django.shortcuts import render
 
 # Create your views here.
 #views.py
+<<<<<<< HEAD
+=======
+from django.db.models import Q
+>>>>>>> 046114fe107927518e149ffcbfa820abb75d66c6
 
 from login.forms import DocumentForm , RegistrationForm
 from login.forms import DocumentForm, RegistrationForm
@@ -16,6 +20,11 @@ from django.shortcuts import render
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.core.urlresolvers import reverse
+from login.models import Publisher
+
+
+from django.contrib.auth.models import User
+
 
 @csrf_protect
 def register(request):
@@ -99,3 +108,26 @@ def perfil(request):
     'perfil.html',
     { 'user': request.user }
     )
+
+
+def search(request):
+    query = request.GET.get('q', '')
+    if query:
+        qset = (
+            Q(username__contains=query) 
+        )
+        results = User.objects.filter(qset)
+#        results = result.sorted(key = str.lower)
+    else:
+        results = []
+        
+
+    return render_to_response("search.html", {
+        "results": results.order_by('username'),
+        "query": query
+    })
+
+
+
+
+
