@@ -2,10 +2,8 @@ from django.shortcuts import render
 
 # Create your views here.
 #views.py
-<<<<<<< HEAD
-=======
+
 from django.db.models import Q
->>>>>>> 046114fe107927518e149ffcbfa820abb75d66c6
 
 from login.forms import DocumentForm , RegistrationForm
 from login.forms import DocumentForm, RegistrationForm
