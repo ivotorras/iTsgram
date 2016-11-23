@@ -67,11 +67,18 @@ document.onmousedown = right;
 
     
 {% block content %}
-  {% if uploaded_file_url %}
+  {% if documents %}
             <ul>
                 {% for document in documents %}
-                    <li><img id="imagen" src="{{ document.docfile.url }}"/></li>
-					
+                    <a>{{ document.user }}</a>
+                    <a>{{ document.fecha }}</a>
+                    {% if documents %}
+                        <img id="imagen" src="{{ document.docfile.url }}"/>
+				    {% else %}
+                        
+                    {% endif %}
+                    <a>{{ document.description }}</a>	
+                
 					<form  method="post" enctype="multipart/form-data">
 						{% csrf_token %}
 						<input type="hidden" name="docfile" value="{{ document.pk }}" />
@@ -82,7 +89,11 @@ document.onmousedown = right;
     {% else %}
             <p>No documents.</p>
     {% endif %}
-        <form  method="post" enctype="multipart/form-data">
+       
+    
+    
+    
+        <form action="/home/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <p>{{ form.non_field_errors }}</p>
         <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
@@ -127,7 +138,7 @@ document.onmousedown = right;
 
   <!-- Modal Structure -->
     
-<!--  <div id="modal1" class="modal">
+  <div id="modal1" class="modal">
     <div class="modal-content">
     <div align = "center"> 
         <input class="centered modal-1" type=image id="modal1" width="565" height="340">
@@ -142,8 +153,7 @@ document.onmousedown = right;
           
         <p><b> User1: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac porttitor arcu.</p>
         <p><b> User2: </b>Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim mauris.Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim maurisNam nisi odio.</p> 
-        <p><b> User3: </b>Pellentesque tempor ullamcorper dapibus. Phasellus tristique fringilla nibh. Cras bibendum non tortor id congue. Nullam consequat magna at interdum tempus.</p>     -->     
-<!--
+        <p><b> User3: </b>Pellentesque tempor ullamcorper dapibus. Phasellus tristique fringilla nibh. Cras bibendum non tortor id congue. Nullam consequat magna at interdum tempus.</p>     
             <div class="row">
     <div class="col s12">
       <ul class="tabs">
@@ -159,7 +169,7 @@ document.onmousedown = right;
   </ul>         
     </div>
     </div>   
--->
+
 
     <script>
     

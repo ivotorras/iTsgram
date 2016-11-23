@@ -9,13 +9,12 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^subir/$', subir , name="subir" ),
+    url(r'^home/$', subir , name="subir" ),
     url(r'^home/$', home),
     url(r'^register/$', register , name="register"),
     url(r'^register/success/$', register_success),
     url(r'^login/$', 'django.contrib.auth.views.login'),
     url(r'^logout/$', logout_page),
-    url(r'^perfil/$','django.contrib.auth.perfil'),
 	url(r'^home/perfil/$', perfil , name="perfil"),
     url(r'^myapp/list/$', RedirectView.as_view(url='/login/', permanent=True)),
     url(r'^$', RedirectView.as_view(url='/login/', permanent=True)),

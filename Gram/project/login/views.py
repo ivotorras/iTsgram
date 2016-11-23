@@ -2,11 +2,9 @@ from django.shortcuts import render
 
 # Create your views here.
 #views.py
-<<<<<<< HEAD
+
 from login.forms import DocumentForm , RegistrationForm
-=======
 from login.forms import DocumentForm, RegistrationForm
->>>>>>> bf6bbfaa6d4ae7f208c85d21181ea1112d0fc803
 from login.models import Document
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
@@ -75,10 +73,13 @@ def subir(request):
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
             newdoc = Document(docfile=request.FILES['docfile'])
+            #newdoc = Document(fecha= "dsasadd")
+    #        newdoc = Document(user= "fdsfsd")
+     #       newdoc = Document(description= "pene")
             newdoc.save()
 
             # Redirect to the document list after POST
-            return HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect('/home/')
     else:
         form = DocumentForm()  # A empty, unbound form
 
