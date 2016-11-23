@@ -2,7 +2,7 @@
 {% block head %}
 
 <html>
-    
+<head>    
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
@@ -10,23 +10,89 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     <title>iTsgram</title>
 
-<body>
+<style>    
+
+.radio{
+    border-radius: 3px !important;
+}     
+    
+body {
+    background-color: #FAFAFA;
+}    
+    
+.collapsible-body p {
+    margin: 0;
+    padding: 0.5rem;
+}
+     
+ .side-nav .userView .circle {
+    height: 150px;
+    width: 150px;
+}
+ 
+.btn, .btn-large {
+  text-decoration: none;
+  color: #000 !important;
+  background-color: transparent;
+  text-align: center;
+  letter-spacing: .5px;
+  transition: .2s ease-out;
+  cursor: pointer;
+}    
+    
+.btn:hover, .btn-large:hover {
+  background-color: transparent;
+}    
+    
+        
+.backdrop {
+  background-color: #607D8B;
+  color: black;    
+}   
+    
+.nav-wrapper{
+    background-color:#1976D2 !important;
+}
+    
+    
+.page-footer{
+    background-color: #0D47A1 !important;   
+}
+    
+       
+.btn{
+  box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0) !important;
+}     
+   
+.z-depth-1{
+  box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.005);
+}    
+    
+.collapsible-header i {
+  width: 5px !important;
+}
+    
+.collapsible-header i {
+  margin-right: 2rem !important;
+    }
+.onhover:hover{
+  box-shadow: 0 4px 17px 0 rgba(0, 0, 0, 0.15), 0 3px 10px 0 rgba(0, 0, 0, 0.09);
+    }
+}  
+
+</style>    
+    
+</head>    
+<body>  
+    
     <nav>
     <div class="nav-wrapper">
       <a href="http://127.0.0.1:8000/home/" class="brand-logo right"><img src="/static/images/logos.png" height="50" style="margin-top:6px;"></a>
       <ul id="nav-mobile" class="left">
           <li><a href="#" data-activates="slide-out" class="aaa"><i class="material-icons">menu</i></a></li>
       </ul>
-<!--        
-               <form name="fo" action="/home/search/" method="GET">
-        <div class="row">
-        <div class="col l4 offset-l2">
-        <div class="input-field">
-          <input maxlength="30" id="text"  type="search" name="q" value="{{ query|escape }}" required >
-          <label for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
-        </div></div></div>
-      </form> -->        
+
+        
   <form name="fo" action="" method="GET">
         <div class="row">
         <div class="col l5 offset-l3">
@@ -39,18 +105,6 @@
     </div>     
   </nav>      
 
-    
-<!--
-    
-      <div class="row">
-        <div class="col s3 offset-s1">
-          <div class="card orange lighten-2">
-            <div class="card-content black-text">
-              <span class="card-title">Resultados</span>
-
-
-                
--->
                 
             
 <BR></BR>  
@@ -157,77 +211,7 @@
 });
     </script>
    
-<style>    
 
-.radio{
-    border-radius: 3px !important;
-}     
-    
-body {
-    background-color: #FAFAFA;
-}    
-    
-.collapsible-body p {
-    margin: 0;
-    padding: 0.5rem;
-}
-     
- .side-nav .userView .circle {
-    height: 150px;
-    width: 150px;
-}
- 
-.btn, .btn-large {
-  text-decoration: none;
-  color: #000 !important;
-  background-color: transparent;
-  text-align: center;
-  letter-spacing: .5px;
-  transition: .2s ease-out;
-  cursor: pointer;
-}    
-    
-.btn:hover, .btn-large:hover {
-  background-color: transparent;
-}    
-    
-        
-.backdrop {
-  background-color: #607D8B;
-  color: black;    
-}   
-    
-.nav-wrapper{
-    background-color:#1976D2 !important;
-}
-    
-    
-.page-footer{
-    background-color: #0D47A1 !important;   
-}
-    
-       
-.btn{
-  box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0) !important;
-}     
-   
-.z-depth-1{
-  box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.005);
-}    
-    
-.collapsible-header i {
-  width: 5px !important;
-}
-    
-.collapsible-header i {
-  margin-right: 2rem !important;
-    }
-.onhover:hover{
-  box-shadow: 0 4px 17px 0 rgba(0, 0, 0, 0.15), 0 3px 10px 0 rgba(0, 0, 0, 0.09);
-    }
-}  
-
-</style>
 
  
 </html>

@@ -2,217 +2,22 @@
 {% block head %}
 
 <html>
-    
+<head>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-    
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">  
+    
 
     <!-- Compiled and minified JavaScript -->
    
     <title>iTsgram</title>
-<body>
-  <!--  
-<body oncontextmenu='return false' onkeydown='return false' ondragstart="return false;">    
-
-
-    <script language="Javascript">
-   document.oncontextmenu = function() {
-      return false
-   }
-   function right(e) {
-      var msg = "Prohibido usar Click Derecho! ";
-      if (navigator.appName == 'Netscape' && e.which == 3) {
-         alert(msg); //- Si no quieres asustar a tu usuario entonces quita esta linea...
-         return false;
-      }
-      else if (navigator.appName == 'Microsoft Internet Explorer' && event.button==2) {
-         alert(msg); //- Si no quieres asustar al usuario que utiliza IE,  entonces quita esta linea...
-                        //- Aunque realmente se lo merezca...
-      return false;
-      }
-   return true;
-}
-document.onmousedown = right;
-</script>
-    
-    -->
-
-    <nav>
-    <div class="nav-wrapper">
-      <a href="http://127.0.0.1:8000/home/" class="brand-logo right"><img src="/static/images/logos.png" height="50" style="margin-top:6px;"></a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-          <li><a href="#" data-activates="slide-out" class="aaa"><i class="material-icons">menu</i></a></li>
-      </ul>
-
-          <form name="fo" action="/home/search/" method="GET">
-        <div class="row">
-        <div class="col l5 offset-l3">
-        <div class="input-field radio" style="height: 80%; margin-top:6px;">
-          <input class="radio blue" maxlength="30" id="text" placeholder="Buscar" type="search" name="q" value="{{ query|escape }}" required >
-          <label for="search"><i class="material-icons" style="margin-top:-5px;">search</i></label>
-          <i class="material-icons" style="margin-top:-5px;" >close</i>
-        </div></div></div>
-      </form>
-        
-    </div>
-  </nav>      
-
-
-
-                
-                
-                
-
-   
-{% block content %}
-  {% if uploaded_file_url %}
-            <ul>
-                {% for document in documents %}
-                    <li><img id="imagen" src="{{ document.docfile.url }}"/></li>
-					
-					<form  method="post" enctype="multipart/form-data">
-						{% csrf_token %}
-						<input type="hidden" name="docfile" value="{{ document.pk }}" />
-						<input type="submit" value="Delete" />
-        			</form>		
-                {% endfor %}
-            </ul>
-    {% else %}
-            <p>No documents.</p>
-    {% endif %}
-        <form  method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <p>{{ form.non_field_errors }}</p>
-        <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
-        <p>
-            {{ form.docfile.errors }}
-            {{ form.docfile }}
-        </p>
-        <a class="btn-floating btn-large waves-effect waves-light red btnfoto" type="submit"><i class="material-icons">camera</i></a>    
-            
-            
-    </form>
-{% endblock %}
-
-<!--
-
-  <div class="container">
-    <table class="centered">
-        <tbody>
-          <tr>
-            <td><input class="modal-trigger" type=image src='/static/images/1.jpg' width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/2.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/3.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-          <tr>
-            <td><input class="modal-trigger" type=image src="/static/images/4.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/5.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/6.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-          <tr>
-            <td><input class="modal-trigger" type=image src="/static/images/7.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/8.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/9.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    
-        
-    
-
-   Modal Structure 
-    
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-    <div align = "center"> 
-        <input class="centered modal-1" type=image id="modal1" width="565" height="340">
-        </div>    
-  <ul class="collapsible" data-collapsible="accordion">
-    <li>
-        <div class="collapsible-header"><a class="btn tooltipped" data-position="top" data-delay="10" data-tooltip="Comments"><i class="material-icons">comment</i></a></div>
-
-   
-      <div class="collapsible-body">
-          
-          
-        <p><b> User1: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac porttitor arcu.</p>
-        <p><b> User2: </b>Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim mauris.Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim maurisNam nisi odio.</p> 
-        <p><b> User3: </b>Pellentesque tempor ullamcorper dapibus. Phasellus tristique fringilla nibh. Cras bibendum non tortor id congue. Nullam consequat magna at interdum tempus.</p>          
-
-  
-     </div>
-    </li>    
-  </ul>         
-    </div>
-    </div>   
-
-
--->
-    
-
-    <script>
-    
-     $(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal-trigger').leanModal();
-         $('.modal-trigger').click(function(e){
-             $('.modal-1').attr('src',$(this).attr('src')) ;
-         })
-  });
- 
-      $(document).ready(function(){
-    $('.collapsible').collapsible({
-      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-    });
-  });
-      
-      $(document).ready(function(){
-    $('.tooltipped').tooltip({delay: 50});
-  });    
-    
-    </script>
-       
-    <div>  
-        <ul id="slide-out" class="side-nav">
-    <li><div class="userView">
-<!--      <img class="background" src="/static/images/2.jpg">-->
-      <a href="#!user"><img class="circle" class="responsive-img" src="/static/images/perfil.png"></a>
-      <a href="#!name"><span class="black-text name">{{ user.username }}</span></a>  
-      <a href="#!email"><span class="black-text email">{{ user.email }}</span></a>
-    </div></li>
-            
-    <li><a href="perfil/"  ><i class="material-icons">perm_identity</i>Perfil</a></li>          
-    <li><a type="submit" onclick="window.location.href='/logout/' "><i class="material-icons">settings_power</i>Logout</a> </li>   
-   
-     <li><div class="divider"></div></li>     
-    <li><a class="subheader">Favoritos</a></li>
-    <li><a class="waves-effect">Cheru</a></li>
-    <li><a class="waves-effect">Ivo</a></li>
-    <li><a class="waves-effect">Enano</a></li>
-    <li><a class="waves-effect">Huevo</a></li> 
-            
-            
-                  
-  </ul>
-
-    </div> 
-    
-</body> 
-    
-     <script>
-        $( document ).ready(function() {
-        $(".aaa").sideNav();
-        });
-    </script>
     
 <style> 
-    
+.radio{
+    border-radius: 3px !important;
+}     
 
 .radio{
     border-radius: 3px !important;
@@ -275,7 +80,215 @@ document.onmousedown = right;
     margin-left: 49%;
     position: fixed;
     }
-</style>
+</style>    
+</head>    
+    
+<body>
+  <!--  
+<body oncontextmenu='return false' onkeydown='return false' ondragstart="return false;">    
+
+
+    <script language="Javascript">
+   document.oncontextmenu = function() {
+      return false
+   }
+   function right(e) {
+      var msg = "Prohibido usar Click Derecho! ";
+      if (navigator.appName == 'Netscape' && e.which == 3) {
+         alert(msg); //- Si no quieres asustar a tu usuario entonces quita esta linea...
+         return false;
+      }
+      else if (navigator.appName == 'Microsoft Internet Explorer' && event.button==2) {
+         alert(msg); //- Si no quieres asustar al usuario que utiliza IE,  entonces quita esta linea...
+                        //- Aunque realmente se lo merezca...
+      return false;
+      }
+   return true;
+}
+document.onmousedown = right;
+</script>
+    
+    -->
+
+    <nav>
+    <div class="nav-wrapper">
+      <a href="http://127.0.0.1:8000/home/" class="brand-logo right"><img src="/static/images/logos.png" height="50" style="margin-top:6px;"></a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><a href="#" data-activates="slide-out" class="aaa"><i class="material-icons">menu</i></a></li>
+      </ul>
+
+<form name="fo" action="/home/search/" method="GET">
+        <div class="row">
+        <div class="col l5 offset-l3">
+        <div class="input-field radio" style="height: 80%; margin-top:6px;">
+          <input  id="delit" class="radio blue" maxlength="30" id="text" placeholder="Buscar" type="search" name="q" value="{{ query|escape }}" required >
+          <label for="search"><i class="material-icons" style="margin-top:-5px;">search</i></label>
+          <i class="material-icons" style="margin-top:-5px;" onclick="delit()">close</i>
+        </div></div></div>
+      </form>     
+        
+    </div>
+  </nav>      
+
+
+
+                
+                
+                
+
+   
+{% block content %}
+  {% if uploaded_file_url %}
+            <ul>
+                {% for document in documents %}
+                    <li><img id="imagen" src="{{ document.docfile.url }}"/></li>
+					
+					<form  method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+						<input type="hidden" name="docfile" value="{{ document.pk }}" />
+						<input type="submit" value="Delete" />
+        			</form>		
+                {% endfor %}
+            </ul>
+    {% else %}
+            <p>No documents.</p>
+    {% endif %}
+        <form  method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>{{ form.non_field_errors }}</p>
+        <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+        <p>
+            {{ form.docfile.errors }}
+            {{ form.docfile }}
+        </p>           
+            
+    </form>
+    <div class="btnfoto">
+    <a class="btn-floating btn-large waves-effect waves-light red" type="submit"><i class="material-icons">camera</i></a>
+    </div>
+
+    
+    
+{% endblock %}
+
+<!--
+
+  <div class="container">
+    <table class="centered">
+        <tbody>
+          <tr>
+            <td><input class="modal-trigger" type=image src='/static/images/1.jpg' width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/2.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/3.jpg" width="350" height="200" href="#modal1"></td>
+          </tr>
+          <tr>
+            <td><input class="modal-trigger" type=image src="/static/images/4.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/5.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/6.jpg" width="350" height="200" href="#modal1"></td>
+          </tr>
+          <tr>
+            <td><input class="modal-trigger" type=image src="/static/images/7.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/8.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/9.jpg" width="350" height="200" href="#modal1"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    
+        
+    
+
+   Modal Structure 
+    
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+    <div align = "center"> 
+        <input class="centered modal-1" type=image id="modal1" width="565" height="340">
+        </div>    
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+        <div class="collapsible-header"><a class="btn tooltipped" data-position="top" data-delay="10" data-tooltip="Comments"><i class="material-icons">comment</i></a></div>
+
+   
+      <div class="collapsible-body">
+          
+          
+        <p><b> User1: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac porttitor arcu.</p>
+        <p><b> User2: </b>Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim mauris.Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim maurisNam nisi odio.</p> 
+        <p><b> User3: </b>Pellentesque tempor ullamcorper dapibus. Phasellus tristique fringilla nibh. Cras bibendum non tortor id congue. Nullam consequat magna at interdum tempus.</p>          
+
+  
+     </div>
+    </li>    
+  </ul>         
+    </div>
+    </div>   
+
+
+-->
+    
+
+    <script>
+    
+    function delit(){
+        document.getElementById("delit").value = "";
+    }        
+        
+     $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+         $('.modal-trigger').click(function(e){
+             $('.modal-1').attr('src',$(this).attr('src')) ;
+         })
+  });
+ 
+      $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
+      
+      $(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+  });    
+    
+    </script>
+       
+    <div>  
+        <ul id="slide-out" class="side-nav">
+    <li><div class="userView">
+<!--      <img class="background" src="/static/images/2.jpg">-->
+      <a href="#!user"><img class="circle" class="responsive-img" src="/static/images/perfil.png"></a>
+      <a href="#!name"><span class="black-text name">{{ user.username }}</span></a>  
+      <a href="#!email"><span class="black-text email">{{ user.email }}</span></a>
+    </div></li>
+            
+    <li><a href="perfil/"  ><i class="material-icons">perm_identity</i>Perfil</a></li>          
+    <li><a type="submit" onclick="window.location.href='/logout/' "><i class="material-icons">settings_power</i>Logout</a> </li>   
+   
+     <li><div class="divider"></div></li>     
+    <li><a class="subheader">Favoritos</a></li>
+    <li><a class="waves-effect">Cheru</a></li>
+    <li><a class="waves-effect">Ivo</a></li>
+    <li><a class="waves-effect">Enano</a></li>
+    <li><a class="waves-effect">Huevo</a></li> 
+           
+                  
+                  
+  </ul>
+
+    </div> 
+    
+</body> 
+    
+     <script>
+        $( document ).ready(function() {
+        $(".aaa").sideNav();
+        });
+    </script>
+    
+
     
 </html>
 
