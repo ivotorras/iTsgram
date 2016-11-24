@@ -29,5 +29,5 @@ class RegistrationForm(forms.Form):
 
 class DocumentForm(forms.Form):
 	docfile = forms.FileField(
-        label='Select a file'  
+        label='Seleccionar Foto'  
     )

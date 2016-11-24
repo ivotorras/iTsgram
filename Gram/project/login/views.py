@@ -90,11 +90,13 @@ def subir(request):
             print  "zxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
             newdoc = Document(docfile=request.FILES['docfile'])
             newdoc.save()
+            newdoc.user= "gosheau"
+            newdoc.save()
             print  "zxxxaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaxxxx"
             newdoc.fecha= time.strftime("%d/%m/%y") + " a las " + time.strftime("%H:%M:%S")
             newdoc.save()
             print  "zxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-            newdoc.description= "descri"
+            newdoc.description= "descrwetui"
             newdoc.save()
 
             # Redirect to the document list after POST

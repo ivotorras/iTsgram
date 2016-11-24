@@ -17,8 +17,7 @@
    
     <title>iTsgram</title>
     
-<<<<<<< HEAD
-=======
+
     
   <style> 
     
@@ -88,7 +87,7 @@
     
     
     </head>    
->>>>>>> 54624997089f0e5558f90a30d8f92b1fa08d2b08
+
 <body>
   <!--  
 <body oncontextmenu='return false' onkeydown='return false' ondragstart="return false;">    
@@ -135,20 +134,12 @@ document.onmousedown = right;
         
     </div>
   </nav>      
-            
-            
-<!--EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD|-->          
-<a class="modal-trigger btn-floating btn-large waves-effect waves-light red btnfoto" href="#modal1"><i class="material-icons">camera</i></a>     
-            
-
-        
- <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-        {% if documents %}
+    
+    
+    {% if documents %}
             <ul>
                 {% for document in documents %}
-                    <a>{{ user.username }}</a>
+                    <a>{{ document.user }}</a>
                     <a>{{ document.fecha }}</a>
                     {% if documents %}
                         <img id="imagen" src="{{ document.docfile.url }}"/>
@@ -167,19 +158,28 @@ document.onmousedown = right;
     {% else %}
             <p>No documents.</p>
     {% endif %}
-               
+    
+            
+<!--EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD|-->          
+<a class="modal-trigger btn-floating btn-large waves-effect waves-light red btnfoto" href="#modal1"><i class="material-icons">camera</i></a>     
+            
+
+        
+ <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Nueva Foto</h4>               
          <form action="/home/" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <p>{{ form.non_field_errors }}</p>
-        <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
-        <p>
-            {{ form.docfile.errors }}
-            {{ form.docfile }}
-        </p>
+            {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+            <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+            <p>
+                {{ form.docfile.errors }}
+                {{ form.docfile }}
+            </p>
+            <div class="modal-footer">
+                <button class="btn-floating btn-large waves-effect waves-light" type="submit" >Subir</button>
+            </div>
         </form> 
-    </div>
-    <div class="modal-footer">
-      <button class="btn-floating btn-large waves-effect waves-light" type="submit" value="Unfollow">Subir</button>
     </div>
   </div>
       
