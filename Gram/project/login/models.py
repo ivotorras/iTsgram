@@ -6,10 +6,10 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Document(models.Model):
-    user = models.CharField(max_length=32, blank=False)
+    user = models.CharField(max_length=32, blank=True)
     description = models.CharField(max_length=255, blank=True)
     docfile = models.FileField(upload_to='documents/')
-    fecha = models.DateTimeField(blank=True, null=True)
+    fecha = models.CharField(max_length=255, blank=True)
     #uploaded_at = models.DateTimeField(auto_now_add=True)
 
     

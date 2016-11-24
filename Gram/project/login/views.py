@@ -19,6 +19,9 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.core.urlresolvers import reverse
 from login.models import Publisher
+from django.shortcuts import get_object_or_404
+import time
+
 
 
 from django.contrib.auth.models import User
@@ -55,7 +58,7 @@ def logout_page(request):
     logout(request)
     return HttpResponseRedirect('/')
  
-@login_required
+@login_required(login_url='/login/')
 def home(request):
     context  = RequestContext(request)
     context['user'] = request.user
@@ -68,21 +71,30 @@ def home(request):
      #   return render(request, 'home.html', {
     #       'uploaded_file_url': uploaded_file_url
     #    })
-    return render_to_response(
-    'home.html',context
+    form = DocumentForm(request.POST, request.FILES)
+    documents = Document.objects.all()
+    return render(
+        request,
+        'home.html',
+        {'documents': documents, 'form': form}
     )
 
 
-@login_required
+@login_required(login_url='/login/')
 def subir(request):
     # Handle file upload
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
+            print time.strftime("%d/%m/%y") + " a las " + time.strftime("%H:%M:%S")
+            print  "zxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
             newdoc = Document(docfile=request.FILES['docfile'])
-            #newdoc = Document(fecha= "dsasadd")
-    #        newdoc = Document(user= "fdsfsd")
-     #       newdoc = Document(description= "pene")
+            newdoc.save()
+            print  "zxxxaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaxxxx"
+            newdoc.fecha= time.strftime("%d/%m/%y") + " a las " + time.strftime("%H:%M:%S")
+            newdoc.save()
+            print  "zxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            newdoc.description= "descri"
             newdoc.save()
 
             # Redirect to the document list after POST
@@ -100,14 +112,14 @@ def subir(request):
         {'documents': documents, 'form': form}
     )
 
-@login_required
+@login_required(login_url='/login/')
 def perfil(request):
     return render_to_response(
     'perfil.html',
     { 'user': request.user }
     )
 
-
+@login_required(login_url='/login/')
 def search(request):
     query = request.GET.get('q', '')
     if query:
@@ -125,7 +137,20 @@ def search(request):
         "query": query
     })
 
+@login_required(login_url='/login/')
+def delete(request):
+    print "gfogfof"
+    if request.method != 'GET':
+        raise HTTP404
 
+    docId = request.POST.get('docfile', None)
+    docToDel = get_object_or_404(Document, pk = docId)
+    docToDel.docfile.delete()
+    docToDel.delete()
+    
+    
+
+    return HttpResponseRedirect('/home/')
 
 
 

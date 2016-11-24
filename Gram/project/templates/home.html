@@ -14,6 +14,7 @@
     <!-- Compiled and minified JavaScript -->
    
     <title>iTsgram</title>
+    
 <body>
   <!--  
 <body oncontextmenu='return false' onkeydown='return false' ondragstart="return false;">    
@@ -72,7 +73,7 @@ document.onmousedown = right;
   {% if documents %}
             <ul>
                 {% for document in documents %}
-                    <a>{{ document.user }}</a>
+                    <a>{{ user.username }}</a>
                     <a>{{ document.fecha }}</a>
                     {% if documents %}
                         <img id="imagen" src="{{ document.docfile.url }}"/>
@@ -81,7 +82,7 @@ document.onmousedown = right;
                     {% endif %}
                     <a>{{ document.description }}</a>	
                 
-					<form  method="post" enctype="multipart/form-data">
+					<form action="/home/"  method="get" enctype="multipart/form-data">
 						{% csrf_token %}
 						<input type="hidden" name="docfile" value="{{ document.pk }}" />
 						<input type="submit" value="Delete" />

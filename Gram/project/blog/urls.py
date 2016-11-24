@@ -6,6 +6,7 @@ from login.views import subir
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import RedirectView
+from django.contrib.auth.models import User
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
