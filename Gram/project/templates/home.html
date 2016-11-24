@@ -134,37 +134,73 @@ document.onmousedown = right;
         
     </div>
   </nav>      
+          <ul>
+   <div class="row" style="margin-left:8%   ; margin-right:8%;">  
+      {% for name in results %}
+          
+  
+        
+    <div class="col s12 m6 l4">
+    <div class="card horizontal z-depth-1 onhover">
+      <div class="card-image">
+<!--        <img src="/static/images/perfil.png" width="100" height="100">  -->
+          <i class="material-icons grey lighten-4 grey-text text-darken-1" style="height:86; width:86; font-size:80px;">person</i>
+        <a href="#!user"></a>
+      </div>
+      <div class="card-stacked">   
+        <div class="card-content">
+        <li style="text-transform: uppercase;"><font size = 3 color = "black" href="">{{ name.username|escape }}</font></li>
+        <li><font size = 2 face="Roboto" color = "black" href="">{{ name.email|escape }}</font></li>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+<!--   <img src="/static/images/perfil.png" width="100" height="100">       -->
+          
+
+      {% endfor %}
+     </div>   </ul>
     
-    
+
     {% if documents %}
             <ul>
+                  <div class="row" style="margin-left:8%   ; margin-right:8%;">
                 {% for document in documents %}
-                    <a>{{ document.user }}</a>
-                    <a>{{ document.fecha }}</a>
+                   <div class="col s12 m6 l4">
                     {% if documents %}
-                        <img id="imagen" src="{{ document.docfile.url }}"/>
+                
+                
+                        <input class="modal-trigger" type=image src="{{ document.docfile.url }}" width="350" height="200" href="#modal2">            
+                
 				    {% else %}
                         
                     {% endif %}
-                    <a>{{ document.description }}</a>	
+                    	
                 
 					<form action="/home/"  method="get" enctype="multipart/form-data">
 						{% csrf_token %}
 						<input type="hidden" name="docfile" value="{{ document.pk }}" />
 						<input type="submit" value="Delete" />
         			</form>		
+                      </div>   
                 {% endfor %}
-            </ul>
+            
     {% else %}
             <p>No documents.</p>
     {% endif %}
+
+                      
+                </div>              
+       </ul>
+
+
     
             
 <!--EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD|-->          
 <a class="modal-trigger btn-floating btn-large waves-effect waves-light red btnfoto" href="#modal1"><i class="material-icons">camera</i></a>     
-            
+  
 
-        
  <div id="modal1" class="modal">
     <div class="modal-content">
       <h4>Nueva Foto</h4>               
@@ -208,21 +244,26 @@ document.onmousedown = right;
           </tr>
         </tbody>
       </table>
+>>>>>>> 2fea0cdbfecee7722cb686ca5d2ebde9a669b9a4
     </div>
+  </div>
+      
 
-    
-        
-    
 
-   Modal Structure 
-    
-  <div id="modal1" class="modal">
+<div id="modal2" class="modal">
     <div class="modal-content">
     <div align = "center"> 
         <input class="centered modal-1" type=image id="modal1" width="565" height="340">
         </div>    
   <ul class="collapsible" data-collapsible="accordion">
     <li>
+        
+        {% for document in documents %}
+                    <a>{{ document.user }}</a>
+                    <a>{{ document.fecha }}</a>
+                    <a>{{ document.description }}</a>
+        {% endfor %}
+        
         <div class="collapsible-header"><a class="btn tooltipped" data-position="top" data-delay="10" data-tooltip="Comments"><i class="material-icons">comment</i></a></div>
 
    
@@ -231,33 +272,20 @@ document.onmousedown = right;
           
         <p><b> User1: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac porttitor arcu.</p>
         <p><b> User2: </b>Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim mauris.Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim maurisNam nisi odio.</p> 
-<<<<<<< HEAD
+
         <p><b> User3: </b>Pellentesque tempor ullamcorper dapibus. Phasellus tristique fringilla nibh. Cras bibendum non tortor id congue. Nullam consequat magna at interdum tempus.</p>     
-            <div class="row">
-    <div class="col s12">
-      <ul class="tabs">
-        <li class="tab col s3"><a href="#test1">Test 1</a></li>
-        <li class="tab col s3"><a class="active" href="#test2">Test 2</a></li>
-      </ul>
-    </div>
-  </div>
-=======
+
         <p><b> User3: </b>Pellentesque tempor ullamcorper dapibus. Phasellus tristique fringilla nibh. Cras bibendum non tortor id congue. Nullam consequat magna at interdum tempus.</p>          
->>>>>>> 046114fe107927518e149ffcbfa820abb75d66c6
+
 
   
      </div>
     </li>    
   </ul>         
     </div>
-    </div>   
-
-<<<<<<< HEAD
-=======
-
--->
+    </div> 
     
-
+-->
 
     <script>
         
@@ -295,7 +323,7 @@ document.onmousedown = right;
     <div>  
         <ul id="slide-out" class="side-nav">
     <li><div class="userView">
-<!--      <img class="background" src="/static/images/2.jpg">-->
+
       <a href="#!user"><img class="circle" class="responsive-img" src="/static/images/perfil.png"></a>
       <a href="#!name"><span class="black-text name">{{ user.username }}</span></a>  
       <a href="#!email"><span class="black-text email">{{ user.email }}</span></a>
