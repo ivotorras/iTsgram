@@ -1,6 +1,8 @@
 {% load staticfiles %}
+<!--
 {% block head %}
-
+{% endblock %}
+-->
 <html>
 <head>    
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -122,59 +124,14 @@ document.onmousedown = right;
         <div class="row">
         <div class="col l5 offset-l3">
         <div class="input-field radio" style="height: 80%; margin-top:6px;">
-          <input class="radio blue" maxlength="30" id="text" placeholder="Buscar" type="search" name="q" value="{{ query|escape }}" required >
+          <input id="deletea"class="radio blue" maxlength="30" id="text" placeholder="Buscar" type="search" name="q" value="{{ query|escape }}" required >
           <label for="search"><i class="material-icons" style="margin-top:-5px;">search</i></label>
-          <i class="material-icons" style="margin-top:-5px;" >close</i>
+          <i class="material-icons" style="margin-top:-5px;" onclick="deletea()">close</i>
         </div></div></div>
       </form>
         
     </div>
   </nav>      
-
-
-
-                
-                
-                
-
-<!--   
-{% block content %}
-  {% if documents %}
-            <ul>
-                {% for document in documents %}
-                    <a>{{ document.user }}</a>
-                    <a>{{ document.fecha }}</a>
-                    {% if documents %}
-                        <img id="imagen" src="{{ document.docfile.url }}"/>
-				    {% else %}
-                        
-                    {% endif %}
-                    <a>{{ document.description }}</a>	
-                
-					<form  method="post" enctype="multipart/form-data">
-						{% csrf_token %}
-						<input type="hidden" name="docfile" value="{{ document.pk }}" />
-						<input type="submit" value="Delete" />
-        			</form>		
-                {% endfor %}
-            </ul>
-    {% else %}
-            <p>No documents.</p>
-    {% endif %}
-       
-    
-    
-    
-        <form action="/home/" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <p>{{ form.non_field_errors }}</p>
-        <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
-        <p>
-            {{ form.docfile.errors }}
-            {{ form.docfile }}
-        </p>
- 
-<p><button class="btn-floating btn-large waves-effect waves-light red btnfoto" type="submit" value="Unfollow"><i class="material-icons">camera</i></button></p>-->
             
             
 <!--EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD|-->          
@@ -224,8 +181,8 @@ document.onmousedown = right;
   </div>
       
 <!--HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD-->
-{% endblock %}
 
+  
 <!--
 
   <div class="container">
@@ -300,7 +257,12 @@ document.onmousedown = right;
 
 
     <script>
-    
+        
+    function deletea(){
+        document.getElementById("deletea").value = "";
+    }
+        
+        
      $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
@@ -360,10 +322,3 @@ document.onmousedown = right;
     
 </html>
 
-
-
-
-
-
-
-{% endblock %}

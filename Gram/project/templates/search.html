@@ -106,7 +106,7 @@ body {
         <div class="input-field radio" style="height: 80%; margin-top:6px;">
           <input  id="delit" class="radio blue" maxlength="30" id="text" placeholder="Buscar" type="search" name="q" value="{{ query|escape }}" required >
           <label for="search"><i class="material-icons" style="margin-top:-5px;">search</i></label>
-          <i class="material-icons" style="margin-top:-5px;" onclick="delit()">close</i>
+          <i class="material-icons" style="margin-top:-5px;" onclick="deletea()">close</i>
         </div></div></div>
       </form>     
     </div>     
@@ -170,7 +170,7 @@ body {
 
 
     <script>
-    function delit(){
+    function deletea(){
         document.getElementById("delit").value = "";
     }    
         
