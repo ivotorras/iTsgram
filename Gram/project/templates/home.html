@@ -1,8 +1,10 @@
 {% load staticfiles %}
+<!--
 {% block head %}
-
+{% endblock %}
+-->
 <html>
-    
+<head>    
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
@@ -15,6 +17,78 @@
    
     <title>iTsgram</title>
     
+<<<<<<< HEAD
+=======
+    
+  <style> 
+    
+
+.radio{
+    border-radius: 3px !important;
+}    
+    
+.collapsible-body p {
+    margin: 0;
+    padding: 0.5rem;
+}
+     
+ .side-nav .userView .circle {
+    height: 150px;
+    width: 150px;
+}
+ 
+.btn, .btn-large {
+  text-decoration: none;
+  color: #000 !important;
+  background-color: transparent;
+  text-align: center;
+  letter-spacing: .5px;
+  transition: .2s ease-out;
+  cursor: pointer;
+}    
+    
+.btn:hover, .btn-large:hover {
+  background-color: transparent;
+}    
+    
+        
+.backdrop {
+  background-color: #607D8B;
+  color: black;    
+}   
+    
+.nav-wrapper{
+    background-color:#1976D2 !important;
+}
+    
+    
+.page-footer{
+    background-color: #0D47A1 !important;   
+}
+    
+       
+.btn{
+  box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0) !important;
+}     
+   
+.collapsible-header i {
+  width: 5px !important;
+}
+    
+.collapsible-header i {
+  margin-right: 2rem !important;
+}    
+
+.btnfoto{
+    bottom: 15;
+    margin-left: 49%;
+    position: fixed;
+    }
+</style>  
+    
+    
+    </head>    
+>>>>>>> 54624997089f0e5558f90a30d8f92b1fa08d2b08
 <body>
   <!--  
 <body oncontextmenu='return false' onkeydown='return false' ondragstart="return false;">    
@@ -53,24 +127,25 @@ document.onmousedown = right;
         <div class="row">
         <div class="col l5 offset-l3">
         <div class="input-field radio" style="height: 80%; margin-top:6px;">
-          <input class="radio blue" maxlength="30" id="text" placeholder="Buscar" type="search" name="q" value="{{ query|escape }}" required >
+          <input id="deletea"class="radio blue" maxlength="30" id="text" placeholder="Buscar" type="search" name="q" value="{{ query|escape }}" required >
           <label for="search"><i class="material-icons" style="margin-top:-5px;">search</i></label>
-          <i class="material-icons" style="margin-top:-5px;" >close</i>
+          <i class="material-icons" style="margin-top:-5px;" onclick="deletea()">close</i>
         </div></div></div>
       </form>
         
     </div>
   </nav>      
+            
+            
+<!--EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD|-->          
+<a class="modal-trigger btn-floating btn-large waves-effect waves-light red btnfoto" href="#modal1"><i class="material-icons">camera</i></a>     
+            
 
-
-
-                
-                
-                
-
-   
-{% block content %}
-  {% if documents %}
+        
+ <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+        {% if documents %}
             <ul>
                 {% for document in documents %}
                     <a>{{ user.username }}</a>
@@ -92,11 +167,8 @@ document.onmousedown = right;
     {% else %}
             <p>No documents.</p>
     {% endif %}
-       
-    
-    
-    
-        <form action="/home/" method="post" enctype="multipart/form-data">
+               
+         <form action="/home/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <p>{{ form.non_field_errors }}</p>
         <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
@@ -104,11 +176,16 @@ document.onmousedown = right;
             {{ form.docfile.errors }}
             {{ form.docfile }}
         </p>
-<!--        <a class="btn-floating btn-large waves-effect waves-light red btnfoto" type="submit" onclick="sumbit"><i class="material-icons">camera</i></a>       -->
-        <p><button class="btn-floating btn-large waves-effect waves-light red btnfoto" type="submit" value="Unfollow"><i class="material-icons">camera</i></button></p>
-    </form>
-{% endblock %}
+        </form> 
+    </div>
+    <div class="modal-footer">
+      <button class="btn-floating btn-large waves-effect waves-light" type="submit" value="Unfollow">Subir</button>
+    </div>
+  </div>
+      
+<!--HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD-->
 
+  
 <!--
 
   <div class="container">
@@ -183,7 +260,12 @@ document.onmousedown = right;
 
 
     <script>
-    
+        
+    function deletea(){
+        document.getElementById("deletea").value = "";
+    }
+        
+        
      $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
@@ -191,6 +273,7 @@ document.onmousedown = right;
              $('.modal-1').attr('src',$(this).attr('src')) ;
          })
   });
+
  
       $(document).ready(function(){
     $('.collapsible').collapsible({
@@ -202,7 +285,12 @@ document.onmousedown = right;
     $('.tooltipped').tooltip({delay: 50});
   });    
     
-    </script>
+
+     $( document ).ready(function() {
+        $(".aaa").sideNav();
+        });
+    </script>       
+
        
     <div>  
         <ul id="slide-out" class="side-nav">
@@ -231,84 +319,9 @@ document.onmousedown = right;
     
 </body> 
     
-     <script>
-        $( document ).ready(function() {
-        $(".aaa").sideNav();
-        });
-    </script>
-    
-<style> 
+
     
 
-.radio{
-    border-radius: 3px !important;
-}    
-    
-.collapsible-body p {
-    margin: 0;
-    padding: 0.5rem;
-}
-     
- .side-nav .userView .circle {
-    height: 150px;
-    width: 150px;
-}
- 
-.btn, .btn-large {
-  text-decoration: none;
-  color: #000 !important;
-  background-color: transparent;
-  text-align: center;
-  letter-spacing: .5px;
-  transition: .2s ease-out;
-  cursor: pointer;
-}    
-    
-.btn:hover, .btn-large:hover {
-  background-color: transparent;
-}    
-    
-        
-.backdrop {
-  background-color: #607D8B;
-  color: black;    
-}   
-    
-.nav-wrapper{
-    background-color:#1976D2 !important;
-}
-    
-    
-.page-footer{
-    background-color: #0D47A1 !important;   
-}
-    
-       
-.btn{
-  box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0) !important;
-}     
-   
-.collapsible-header i {
-  width: 5px !important;
-}
-    
-.collapsible-header i {
-  margin-right: 2rem !important;
-}    
-
-.btnfoto{
-    bottom: 15;
-    margin-left: 49%;
-    position: fixed;
-    }
-</style>
     
 </html>
 
-
-
-
-
-
-
-{% endblock %}
