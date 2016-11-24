@@ -134,16 +134,6 @@ document.onmousedown = right;
         
     </div>
   </nav>      
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
           <ul>
    <div class="row" style="margin-left:8%   ; margin-right:8%;">  
       {% for name in results %}
@@ -172,18 +162,7 @@ document.onmousedown = right;
       {% endfor %}
      </div>   </ul>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     {% if documents %}
             <ul>
                   <div class="row" style="margin-left:8%   ; margin-right:8%;">
@@ -210,13 +189,18 @@ document.onmousedown = right;
     {% else %}
             <p>No documents.</p>
     {% endif %}
+
                       
                 </div>              
        </ul>
+
+
     
             
 <!--EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD|-->          
 <a class="modal-trigger btn-floating btn-large waves-effect waves-light red btnfoto" href="#modal1"><i class="material-icons">camera</i></a>     
+  
+
  <div id="modal1" class="modal">
     <div class="modal-content">
       <h4>Nueva Foto</h4>               
@@ -232,6 +216,35 @@ document.onmousedown = right;
                 <button class="btn-floating btn-large waves-effect waves-light" type="submit" >Subir</button>
             </div>
         </form> 
+    </div>
+  </div>
+      
+<!--HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD-->
+
+  
+<!--
+
+  <div class="container">
+    <table class="centered">
+        <tbody>
+          <tr>
+            <td><input class="modal-trigger" type=image src='/static/images/1.jpg' width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/2.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/3.jpg" width="350" height="200" href="#modal1"></td>
+          </tr>
+          <tr>
+            <td><input class="modal-trigger" type=image src="/static/images/4.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/5.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/6.jpg" width="350" height="200" href="#modal1"></td>
+          </tr>
+          <tr>
+            <td><input class="modal-trigger" type=image src="/static/images/7.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/8.jpg" width="350" height="200" href="#modal1"></td>
+            <td><input class="modal-trigger" type=image src="/static/images/9.jpg" width="350" height="200" href="#modal1"></td>
+          </tr>
+        </tbody>
+      </table>
+>>>>>>> 2fea0cdbfecee7722cb686ca5d2ebde9a669b9a4
     </div>
   </div>
       
@@ -272,7 +285,7 @@ document.onmousedown = right;
     </div>
     </div> 
     
-
+-->
 
     <script>
         
@@ -310,7 +323,7 @@ document.onmousedown = right;
     <div>  
         <ul id="slide-out" class="side-nav">
     <li><div class="userView">
-<!--      <img class="background" src="/static/images/2.jpg">-->
+
       <a href="#!user"><img class="circle" class="responsive-img" src="/static/images/perfil.png"></a>
       <a href="#!name"><span class="black-text name">{{ user.username }}</span></a>  
       <a href="#!email"><span class="black-text email">{{ user.email }}</span></a>
