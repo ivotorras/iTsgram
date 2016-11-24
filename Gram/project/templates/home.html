@@ -1,23 +1,26 @@
 {% load staticfiles %}
+<!--
 {% block head %}
-
+{% endblock %}
+-->
 <html>
-<head>
+<head>    
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">  
     
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
    
     <title>iTsgram</title>
     
-<style> 
-.radio{
-    border-radius: 3px !important;
-}     
+
+    
+  <style> 
+    
 
 .radio{
     border-radius: 3px !important;
@@ -80,9 +83,11 @@
     margin-left: 49%;
     position: fixed;
     }
-</style>    
-</head>    
+</style>  
     
+    
+    </head>    
+
 <body>
   <!--  
 <body oncontextmenu='return false' onkeydown='return false' ondragstart="return false;">    
@@ -117,97 +122,135 @@ document.onmousedown = right;
           <li><a href="#" data-activates="slide-out" class="aaa"><i class="material-icons">menu</i></a></li>
       </ul>
 
-<form name="fo" action="/home/search/" method="GET">
+          <form name="fo" action="/home/search/" method="GET">
         <div class="row">
         <div class="col l5 offset-l3">
         <div class="input-field radio" style="height: 80%; margin-top:6px;">
-          <input  id="delit" class="radio blue" maxlength="30" id="text" placeholder="Buscar" type="search" name="q" value="{{ query|escape }}" required >
+          <input id="deletea"class="radio blue" maxlength="30" id="text" placeholder="Buscar" type="search" name="q" value="{{ query|escape }}" required >
           <label for="search"><i class="material-icons" style="margin-top:-5px;">search</i></label>
-          <i class="material-icons" style="margin-top:-5px;" onclick="delit()">close</i>
+          <i class="material-icons" style="margin-top:-5px;" onclick="deletea()">close</i>
         </div></div></div>
-      </form>     
+      </form>
         
     </div>
   </nav>      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+          <ul>
+   <div class="row" style="margin-left:8%   ; margin-right:8%;">  
+      {% for name in results %}
+          
+  
+        
+    <div class="col s12 m6 l4">
+    <div class="card horizontal z-depth-1 onhover">
+      <div class="card-image">
+<!--        <img src="/static/images/perfil.png" width="100" height="100">  -->
+          <i class="material-icons grey lighten-4 grey-text text-darken-1" style="height:86; width:86; font-size:80px;">person</i>
+        <a href="#!user"></a>
+      </div>
+      <div class="card-stacked">   
+        <div class="card-content">
+        <li style="text-transform: uppercase;"><font size = 3 color = "black" href="">{{ name.username|escape }}</font></li>
+        <li><font size = 2 face="Roboto" color = "black" href="">{{ name.email|escape }}</font></li>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+<!--   <img src="/static/images/perfil.png" width="100" height="100">       -->
+          
 
-
-
-                
-                
-                
-
-   
-{% block content %}
-  {% if uploaded_file_url %}
+      {% endfor %}
+     </div>   </ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    {% if documents %}
             <ul>
+                  <div class="row" style="margin-left:8%   ; margin-right:8%;">
                 {% for document in documents %}
-                    <li><img id="imagen" src="{{ document.docfile.url }}"/></li>
-					
-					<form  method="post" enctype="multipart/form-data">
+                   <div class="col s12 m6 l4">
+                    {% if documents %}
+                
+                
+                        <input class="modal-trigger" type=image src="{{ document.docfile.url }}" width="350" height="200" href="#modal2">            
+                
+				    {% else %}
+                        
+                    {% endif %}
+                    	
+                
+					<form action="/home/"  method="get" enctype="multipart/form-data">
 						{% csrf_token %}
 						<input type="hidden" name="docfile" value="{{ document.pk }}" />
 						<input type="submit" value="Delete" />
         			</form>		
+                      </div>   
                 {% endfor %}
-            </ul>
+            
     {% else %}
             <p>No documents.</p>
     {% endif %}
-        <form  method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <p>{{ form.non_field_errors }}</p>
-        <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
-        <p>
-            {{ form.docfile.errors }}
-            {{ form.docfile }}
-        </p>           
+                      
+                </div>              
+       </ul>
+    
             
-    </form>
-    <div class="btnfoto">
-    <a class="btn-floating btn-large waves-effect waves-light red" type="submit"><i class="material-icons">camera</i></a>
+<!--EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD| EMPIEZA EL CARD|-->          
+<a class="modal-trigger btn-floating btn-large waves-effect waves-light red btnfoto" href="#modal1"><i class="material-icons">camera</i></a>     
+ <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Nueva Foto</h4>               
+         <form action="/home/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+            <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+            <p>
+                {{ form.docfile.errors }}
+                {{ form.docfile }}
+            </p>
+            <div class="modal-footer">
+                <button class="btn-floating btn-large waves-effect waves-light" type="submit" >Subir</button>
+            </div>
+        </form> 
     </div>
+  </div>
+      
 
-    
-    
-{% endblock %}
 
-<!--
-
-  <div class="container">
-    <table class="centered">
-        <tbody>
-          <tr>
-            <td><input class="modal-trigger" type=image src='/static/images/1.jpg' width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/2.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/3.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-          <tr>
-            <td><input class="modal-trigger" type=image src="/static/images/4.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/5.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/6.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-          <tr>
-            <td><input class="modal-trigger" type=image src="/static/images/7.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/8.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/9.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    
-        
-    
-
-   Modal Structure 
-    
-  <div id="modal1" class="modal">
+<div id="modal2" class="modal">
     <div class="modal-content">
     <div align = "center"> 
         <input class="centered modal-1" type=image id="modal1" width="565" height="340">
         </div>    
   <ul class="collapsible" data-collapsible="accordion">
     <li>
+        
+        {% for document in documents %}
+                    <a>{{ document.user }}</a>
+                    <a>{{ document.fecha }}</a>
+                    <a>{{ document.description }}</a>
+        {% endfor %}
+        
         <div class="collapsible-header"><a class="btn tooltipped" data-position="top" data-delay="10" data-tooltip="Comments"><i class="material-icons">comment</i></a></div>
 
    
@@ -216,24 +259,27 @@ document.onmousedown = right;
           
         <p><b> User1: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac porttitor arcu.</p>
         <p><b> User2: </b>Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim mauris.Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim maurisNam nisi odio.</p> 
+
+        <p><b> User3: </b>Pellentesque tempor ullamcorper dapibus. Phasellus tristique fringilla nibh. Cras bibendum non tortor id congue. Nullam consequat magna at interdum tempus.</p>     
+
         <p><b> User3: </b>Pellentesque tempor ullamcorper dapibus. Phasellus tristique fringilla nibh. Cras bibendum non tortor id congue. Nullam consequat magna at interdum tempus.</p>          
+
 
   
      </div>
     </li>    
   </ul>         
     </div>
-    </div>   
-
-
--->
+    </div> 
     
+
 
     <script>
-    
-    function delit(){
-        document.getElementById("delit").value = "";
-    }        
+        
+    function deletea(){
+        document.getElementById("deletea").value = "";
+    }
+        
         
      $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
@@ -242,6 +288,7 @@ document.onmousedown = right;
              $('.modal-1').attr('src',$(this).attr('src')) ;
          })
   });
+
  
       $(document).ready(function(){
     $('.collapsible').collapsible({
@@ -253,7 +300,12 @@ document.onmousedown = right;
     $('.tooltipped').tooltip({delay: 50});
   });    
     
-    </script>
+
+     $( document ).ready(function() {
+        $(".aaa").sideNav();
+        });
+    </script>       
+
        
     <div>  
         <ul id="slide-out" class="side-nav">
@@ -273,8 +325,8 @@ document.onmousedown = right;
     <li><a class="waves-effect">Ivo</a></li>
     <li><a class="waves-effect">Enano</a></li>
     <li><a class="waves-effect">Huevo</a></li> 
-           
-                  
+            
+            
                   
   </ul>
 
@@ -282,20 +334,9 @@ document.onmousedown = right;
     
 </body> 
     
-     <script>
-        $( document ).ready(function() {
-        $(".aaa").sideNav();
-        });
-    </script>
+
     
 
     
 </html>
 
-
-
-
-
-
-
-{% endblock %}

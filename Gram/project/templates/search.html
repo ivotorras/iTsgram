@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     <title>iTsgram</title>
-
+    
 <style>    
 
 .radio{
@@ -82,29 +82,48 @@ body {
 
 </style>    
     
-</head>    
-<body>  
-    
+    </head>
+<body>
     <nav>
     <div class="nav-wrapper">
       <a href="http://127.0.0.1:8000/home/" class="brand-logo right"><img src="/static/images/logos.png" height="50" style="margin-top:6px;"></a>
       <ul id="nav-mobile" class="left">
           <li><a href="#" data-activates="slide-out" class="aaa"><i class="material-icons">menu</i></a></li>
       </ul>
-
-        
+<!--        
+               <form name="fo" action="/home/search/" method="GET">
+        <div class="row">
+        <div class="col l4 offset-l2">
+        <div class="input-field">
+          <input maxlength="30" id="text"  type="search" name="q" value="{{ query|escape }}" required >
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div></div></div>
+      </form> -->        
   <form name="fo" action="" method="GET">
         <div class="row">
         <div class="col l5 offset-l3">
         <div class="input-field radio" style="height: 80%; margin-top:6px;">
           <input  id="delit" class="radio blue" maxlength="30" id="text" placeholder="Buscar" type="search" name="q" value="{{ query|escape }}" required >
           <label for="search"><i class="material-icons" style="margin-top:-5px;">search</i></label>
-          <i class="material-icons" style="margin-top:-5px;" onclick="delit()">close</i>
+          <i class="material-icons" style="margin-top:-5px;" onclick="deletea()">close</i>
         </div></div></div>
       </form>     
     </div>     
   </nav>      
 
+    
+<!--
+    
+      <div class="row">
+        <div class="col s3 offset-s1">
+          <div class="card orange lighten-2">
+            <div class="card-content black-text">
+              <span class="card-title">Resultados</span>
+
+
+                
+-->
                 
             
 <BR></BR>  
@@ -151,7 +170,7 @@ body {
 
 
     <script>
-    function delit(){
+    function deletea(){
         document.getElementById("delit").value = "";
     }    
         
