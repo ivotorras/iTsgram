@@ -72,7 +72,7 @@ def home(request):
     #       'uploaded_file_url': uploaded_file_url
     #    })
     form = DocumentForm(request.POST, request.FILES)
-    documents = Document.objects.all()
+    documents = Document.objects.all().order_by()
     return render(
         request,
         'home.html',
@@ -87,15 +87,12 @@ def subir(request):
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
             print time.strftime("%d/%m/%y") + " a las " + time.strftime("%H:%M:%S")
-            print  "zxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
             newdoc = Document(docfile=request.FILES['docfile'])
             newdoc.save()
             newdoc.user= "gosheau"
             newdoc.save()
-            print  "zxxxaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaxxxx"
             newdoc.fecha= time.strftime("%d/%m/%y") + " a las " + time.strftime("%H:%M:%S")
             newdoc.save()
-            print  "zxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
             newdoc.description= "descrwetui"
             newdoc.save()
 
@@ -135,7 +132,7 @@ def search(request):
         
 
     return render_to_response("search.html", {
-        "results": results.order_by('username'),
+        "results": results.c('username'),
         "query": query
     })
 

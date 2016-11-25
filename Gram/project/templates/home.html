@@ -83,6 +83,11 @@
     margin-left: 49%;
     position: fixed;
     }
+      
+div.play , div.pause , div.stop , div.previous , div.next
+{
+  display: inline;
+}      
 </style>  
     
     
@@ -187,7 +192,7 @@ document.onmousedown = right;
                 {% endfor %}
             
     {% else %}
-            <p>No documents.</p>
+            <p>No hay fotos todavia.</p>
     {% endif %}
 
                       
@@ -203,7 +208,7 @@ document.onmousedown = right;
 
  <div id="modal1" class="modal">
     <div class="modal-content">
-      <h4>Nueva Foto</h4>               
+      <h5>Nueva Foto</h5>               
          <form action="/home/" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <p>{{ form.non_field_errors }}</p>
@@ -212,42 +217,27 @@ document.onmousedown = right;
                 {{ form.docfile.errors }}
                 {{ form.docfile }}
             </p>
+     
             <div class="modal-footer">
-                <button class="btn-floating btn-large waves-effect waves-light" type="submit" >Subir</button>
+                <button class="btn-floating btn-large waves-effect waves-light" type="submit">Subir</button>
+          
+
+                <div class="row">
+
+                    <div class="row">
+                      <div class="input-field col s10">
+                        <input id="input_text" type="text" length="250">
+                        <label for="input_text">Descripcion</label>
+                      </div>
+                    </div>
+
+                </div>
+  
             </div>
         </form> 
     </div>
   </div>
-      
-<!--HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD-->
 
-  
-<!--
-
-  <div class="container">
-    <table class="centered">
-        <tbody>
-          <tr>
-            <td><input class="modal-trigger" type=image src='/static/images/1.jpg' width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/2.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/3.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-          <tr>
-            <td><input class="modal-trigger" type=image src="/static/images/4.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/5.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/6.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-          <tr>
-            <td><input class="modal-trigger" type=image src="/static/images/7.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/8.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/9.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-        </tbody>
-      </table>
->>>>>>> 2fea0cdbfecee7722cb686ca5d2ebde9a669b9a4
-    </div>
-  </div>
-      
 
 
 <div id="modal2" class="modal">
@@ -258,11 +248,13 @@ document.onmousedown = right;
   <ul class="collapsible" data-collapsible="accordion">
     <li>
         
+<!--
         {% for document in documents %}
                     <a>{{ document.user }}</a>
                     <a>{{ document.fecha }}</a>
                     <a>{{ document.description }}</a>
         {% endfor %}
+-->
         
         <div class="collapsible-header"><a class="btn tooltipped" data-position="top" data-delay="10" data-tooltip="Comments"><i class="material-icons">comment</i></a></div>
 
@@ -277,7 +269,21 @@ document.onmousedown = right;
 
         <p><b> User3: </b>Pellentesque tempor ullamcorper dapibus. Phasellus tristique fringilla nibh. Cras bibendum non tortor id congue. Nullam consequat magna at interdum tempus.</p>          
 
-
+          
+          
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s10">
+            <input id="input_text" type="text" length="250">
+            <label for="input_text">Input text</label>
+          </div>
+        </div>
+      </form>
+    </div>
+          
+          
+          
   
      </div>
     </li>    
@@ -285,7 +291,7 @@ document.onmousedown = right;
     </div>
     </div> 
     
--->
+
 
     <script>
         
