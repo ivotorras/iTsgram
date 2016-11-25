@@ -83,6 +83,11 @@
     margin-left: 49%;
     position: fixed;
     }
+      
+div.play , div.pause , div.stop , div.previous , div.next
+{
+  display: inline;
+}      
 </style>  
     
     
@@ -126,7 +131,7 @@ document.onmousedown = right;
         <div class="row">
         <div class="col l5 offset-l3">
         <div class="input-field radio" style="height: 80%; margin-top:6px;">
-          <input id="deletea"class="radio blue" maxlength="30" id="text" placeholder="Buscar" type="search" name="q" value="{{ query|escape }}" required >
+          <input id="deletea"class="radio blue" maxlength="30" id="text" placeholder="Buscar" autocomplete="off" type="search" name="q" value="{{ query|escape }}" required >
           <label for="search"><i class="material-icons" style="margin-top:-5px;">search</i></label>
           <i class="material-icons" style="margin-top:-5px;" onclick="deletea()">close</i>
         </div></div></div>
@@ -187,7 +192,7 @@ document.onmousedown = right;
                 {% endfor %}
             
     {% else %}
-            <p>No documents.</p>
+            <p>No hay fotos todavia.</p>
     {% endif %}
 
                       
@@ -203,7 +208,7 @@ document.onmousedown = right;
 
  <div id="modal1" class="modal">
     <div class="modal-content">
-      <h4>Nueva Foto</h4>               
+      <h5>Nueva Foto</h5>               
          <form action="/home/" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <p>{{ form.non_field_errors }}</p>
@@ -212,19 +217,34 @@ document.onmousedown = right;
                 {{ form.docfile.errors }}
                 {{ form.docfile }}
             </p>
+     
             <div class="modal-footer">
-                <button class="btn-floating btn-large waves-effect waves-light" type="submit" >Subir</button>
+                <button class="btn-floating btn-large waves-effect waves-light" type="submit">Subir</button>
+          
+
+                <div class="row">
+
+                    <div class="row">
+                      <div class="input-field col s10">
+                        <input id="input_text" type="text" length="250" autocomplete="off">
+                        <label for="input_text">Descripcion</label>
+                      </div>
+                    </div>
+
+                </div>
+  
             </div>
         </form> 
     </div>
   </div>
+
       
 <!--HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD-->
 
   
 
 
-      
+
 
 
 <div id="modal2" class="modal">
@@ -236,6 +256,15 @@ document.onmousedown = right;
         <ul class="collapsible" data-collapsible="accordion">
     <li>
         
+
+<!--
+        {% for document in documents %}
+                    <a>{{ document.user }}</a>
+                    <a>{{ document.fecha }}</a>
+                    <a>{{ document.description }}</a>
+        {% endfor %}
+-->
+
         
                     
         <div class="collapsible-header"><a class="btn tooltipped" data-position="top" data-delay="10" data-tooltip="Comments"><i class="material-icons">comment</i></a></div>
@@ -243,12 +272,39 @@ document.onmousedown = right;
    
       <div class="collapsible-body">
           
+
+          
+        <p><b> User1: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac porttitor arcu.</p>
+        <p><b> User2: </b>Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim mauris.Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim maurisNam nisi odio.</p> 
+
+        <p><b> User3: </b>Pellentesque tempor ullamcorper dapibus. Phasellus tristique fringilla nibh. Cras bibendum non tortor id congue. Nullam consequat magna at interdum tempus.</p>     
+
+        <p><b> User3: </b>Pellentesque tempor ullamcorper dapibus. Phasellus tristique fringilla nibh. Cras bibendum non tortor id congue. Nullam consequat magna at interdum tempus.</p>          
+
+          
+          
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s10">
+            <input id="input_text" type="text" length="250" autocomplete="off">
+            <label for="input_text">Input text</label>
+          </div>
+        </div>
+      </form>
+    </div>
+          
+          
+
   
      </div>
     </li>    
   </ul>         
     </div>
     </div> 
+
+    
+
 
     <script>
         
