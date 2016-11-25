@@ -169,9 +169,9 @@ document.onmousedown = right;
                 {% for document in documents %}
                    <div class="col s12 m6 l4">
                     {% if documents %}
-                
-                
-                        <input class="modal-trigger" type=image src="{{ document.docfile.url }}" width="350" height="200" href="#modal2">            
+                        {{ document.user }}
+                        {{ document.fecha }}
+                        <input class="modal-trigger" type=image src="{{ document.docfile.url }}" width="350" height="200" href="#modal2">  {{ document.descri }}  
                 
 				    {% else %}
                         
@@ -222,31 +222,8 @@ document.onmousedown = right;
 <!--HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD| HASTA ACA ES EL CARD-->
 
   
-<!--
 
-  <div class="container">
-    <table class="centered">
-        <tbody>
-          <tr>
-            <td><input class="modal-trigger" type=image src='/static/images/1.jpg' width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/2.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/3.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-          <tr>
-            <td><input class="modal-trigger" type=image src="/static/images/4.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/5.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/6.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-          <tr>
-            <td><input class="modal-trigger" type=image src="/static/images/7.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/8.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger" type=image src="/static/images/9.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-        </tbody>
-      </table>
->>>>>>> 2fea0cdbfecee7722cb686ca5d2ebde9a669b9a4
-    </div>
-  </div>
+
       
 
 
@@ -255,37 +232,23 @@ document.onmousedown = right;
     <div align = "center"> 
         <input class="centered modal-1" type=image id="modal1" width="565" height="340">
         </div>    
-  <ul class="collapsible" data-collapsible="accordion">
+  
+        <ul class="collapsible" data-collapsible="accordion">
     <li>
         
-        {% for document in documents %}
-                    <a>{{ document.user }}</a>
-                    <a>{{ document.fecha }}</a>
-                    <a>{{ document.description }}</a>
-        {% endfor %}
         
+                    
         <div class="collapsible-header"><a class="btn tooltipped" data-position="top" data-delay="10" data-tooltip="Comments"><i class="material-icons">comment</i></a></div>
 
    
       <div class="collapsible-body">
           
-          
-        <p><b> User1: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac porttitor arcu.</p>
-        <p><b> User2: </b>Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim mauris.Nam nisi odio, gravida in porta non, dictum id nisl. Proin enim maurisNam nisi odio.</p> 
-
-        <p><b> User3: </b>Pellentesque tempor ullamcorper dapibus. Phasellus tristique fringilla nibh. Cras bibendum non tortor id congue. Nullam consequat magna at interdum tempus.</p>     
-
-        <p><b> User3: </b>Pellentesque tempor ullamcorper dapibus. Phasellus tristique fringilla nibh. Cras bibendum non tortor id congue. Nullam consequat magna at interdum tempus.</p>          
-
-
   
      </div>
     </li>    
   </ul>         
     </div>
     </div> 
-    
--->
 
     <script>
         
@@ -324,9 +287,9 @@ document.onmousedown = right;
         <ul id="slide-out" class="side-nav">
     <li><div class="userView">
 
-      <a href="#!user"><img class="circle" class="responsive-img" src="/static/images/perfil.png"></a>
-      <a href="#!name"><span class="black-text name">{{ user.username }}</span></a>  
-      <a href="#!email"><span class="black-text email">{{ user.email }}</span></a>
+      <a ><img class="circle" class="responsive-img" src="/static/images/perfil.png"></a>
+      <a ><span class="black-text name">{{ user.username }}</span></a>  
+      <a ><span class="black-text email">{{ user.email }}</span></a>
     </div></li>
             
     <li><a href="perfil/"  ><i class="material-icons">perm_identity</i>Perfil</a></li>          

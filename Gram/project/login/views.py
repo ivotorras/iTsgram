@@ -90,7 +90,7 @@ def subir(request):
             print  "zxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
             newdoc = Document(docfile=request.FILES['docfile'])
             newdoc.save()
-            newdoc.user= "gosheau"
+            newdoc.user= request.user.username
             newdoc.save()
             print  "zxxxaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaxxxx"
             newdoc.fecha= time.strftime("%d/%m/%y") + " a las " + time.strftime("%H:%M:%S")
@@ -116,9 +116,25 @@ def subir(request):
 
 @login_required(login_url='/login/')
 def perfil(request):
-    return render_to_response(
-    'perfil.html',
-    { 'user': request.user }
+    form = DocumentForm(request.POST, request.FILES)
+    loggeduser = request.user.username
+    documents = Document.objects.all()
+    pasadas = []
+
+
+    print loggeduser
+    
+    for i in documents:
+        print loggeduser + " - " + i.user
+        if loggeduser == i.user :
+            print loggeduser + " - " + i.user
+            pasadas.append(i)
+
+    
+    return render(
+        request,
+        'perfil.html',
+        {'pasadas': pasadas, 'form': form}
     )
 
 @login_required(login_url='/login/')
