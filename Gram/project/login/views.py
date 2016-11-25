@@ -132,7 +132,7 @@ def search(request):
         
 
     return render_to_response("search.html", {
-        "results": results.c('username'),
+        "results": results.order_by('username'),
         "query": query
     })
 

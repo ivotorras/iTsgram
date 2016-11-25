@@ -131,7 +131,7 @@ document.onmousedown = right;
         <div class="row">
         <div class="col l5 offset-l3">
         <div class="input-field radio" style="height: 80%; margin-top:6px;">
-          <input id="deletea"class="radio blue" maxlength="30" id="text" placeholder="Buscar" type="search" name="q" value="{{ query|escape }}" required >
+          <input id="deletea"class="radio blue" maxlength="30" id="text" placeholder="Buscar" autocomplete="off" type="search" name="q" value="{{ query|escape }}" required >
           <label for="search"><i class="material-icons" style="margin-top:-5px;">search</i></label>
           <i class="material-icons" style="margin-top:-5px;" onclick="deletea()">close</i>
         </div></div></div>
@@ -226,7 +226,7 @@ document.onmousedown = right;
 
                     <div class="row">
                       <div class="input-field col s10">
-                        <input id="input_text" type="text" length="250">
+                        <input id="input_text" type="text" length="250" autocomplete="off">
                         <label for="input_text">Descripcion</label>
                       </div>
                     </div>
@@ -275,7 +275,7 @@ document.onmousedown = right;
       <form class="col s12">
         <div class="row">
           <div class="input-field col s10">
-            <input id="input_text" type="text" length="250">
+            <input id="input_text" type="text" length="250" autocomplete="off">
             <label for="input_text">Input text</label>
           </div>
         </div>
