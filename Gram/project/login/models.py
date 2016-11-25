@@ -34,8 +34,7 @@ class Likes(models.Model):
         self.cantidad += 1
         self.save()    
 
-
-    
+  
     
     
 class Publisher(models.Model):
