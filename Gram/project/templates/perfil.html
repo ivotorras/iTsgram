@@ -163,7 +163,7 @@ document.onmousedown = right;
 				    
                     	
                 
-					<form action="/home/"  method="get" enctype="multipart/form-data">
+					<form action="/home/perfil/"  method="get" enctype="multipart/form-data">
 						{% csrf_token %}
 						<input type="hidden" name="docfile" value="{{ document.pk }}" />
 						<input type="submit" value="Delete" />

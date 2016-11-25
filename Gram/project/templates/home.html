@@ -173,22 +173,11 @@ document.onmousedown = right;
                   <div class="row" style="margin-left:8%   ; margin-right:8%;">
                 {% for document in documents %}
                    <div class="col s12 m6 l4">
-                    {% if documents %}
                         {{ document.user }}
                         {{ document.fecha }}
-                        <input class="modal-trigger" type=image src="{{ document.docfile.url }}" width="350" height="200" href="#modal2">  {{ document.descri }}  
-                
-				    {% else %}
-                        
-                    {% endif %}
-                    	
-                
-					<form action="/home/"  method="get" enctype="multipart/form-data">
-						{% csrf_token %}
-						<input type="hidden" name="docfile" value="{{ document.pk }}" />
-						<input type="submit" value="Delete" />
-        			</form>		
-                      </div>   
+                        {{ document.descri }}  
+                        <input class="modal-trigger" type=image src="{{ document.docfile.url }}" width="350" height="200" href="#modal2">  
+                    </div>   
                 {% endfor %}
             
     {% else %}
