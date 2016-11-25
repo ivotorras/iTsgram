@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^home/$', subir , name="subir" ),
     url(r'^home/$', home),
+    url(r'^home/(?P<username>[-\w]+)$', perfilajeno),
     url(r'^register/$', register , name="register"),
     url(r'^register/success/$', register_success),
     url(r'^login/$', 'django.contrib.auth.views.login'),

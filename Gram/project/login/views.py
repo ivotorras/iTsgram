@@ -167,5 +167,26 @@ def delete(request):
 
     return HttpResponseRedirect('/home/')
 
+@login_required(login_url='/login/')
+def perfilajeno(request, username):
+    form = DocumentForm(request.POST, request.FILES)
+    documents = Document.objects.all()
+    pasadas = []
+    buscado = username
+
+    
+    for i in documents:
+        print buscado + " - " + i.user
+        if buscado == i.user :
+            print buscado + " - " + i.user
+            pasadas.append(i)
+
+    
+    return render(
+        request,
+        'perfil_ajeno.html',
+        {'pasadas': pasadas, 'form': form, 'buscado': buscado}
+    )
+
 
 

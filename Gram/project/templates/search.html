@@ -147,7 +147,7 @@ body {
       </div>
       <div class="card-stacked">   
         <div class="card-content">
-         <a href="/home/{{ name.username }}/"><li style="text-transform: uppercase;"><font size = 3 color = "black" href="">{{ name.username|escape }}</font></li>
+         <a href="/home/{{ name.username }}"><li style="text-transform: uppercase;"><font size = 3 color = "black" href="">{{name.username|escape }}</font></li>
         <li><font size = 2 face="Roboto" color = "black" href="">{{ name.email|escape }}</font></li></a>
         </div>
       </div>
@@ -198,9 +198,9 @@ body {
         <ul id="slide-out" class="side-nav">
     <li><div class="userView">
 <!--      <img class="background" src="/static/images/2.jpg">-->
-      <a href="#!user"><img class="circle" class="responsive-img" src="/static/images/perfil.png"></a>
-      <a href="#!name"><span class="black-text name">{{ user.username }}</span></a>  
-      <a href="#!email"><span class="black-text email">{{ user.email }}</span></a>
+      <a href=""><img class="circle" class="responsive-img" src="/static/images/perfil.png"></a>
+      <a href=""><span class="black-text name">{{ user.username }}</span></a>  
+      <a href=""><span class="black-text email">{{ user.email }}</span></a>
     </div></li>
 
         <li><a href="/home/"><i class="material-icons">view_module</i>Home</a></li>  

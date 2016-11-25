@@ -133,11 +133,22 @@ document.onmousedown = right;
 
         
     <div class="center-align">
-        <a class="foto"><input type=image class="circle" src='/static/images/perfil.png' width="200" height="200"></a>  <BR></BR>      
-        <div class="center-align">
-            <font size = 5 face="Roboto" color = "red">{{ user.username }}</font><br>
-            <a class="perfil">{{ user.email }}</a><br>
-        </div>  
+        <a class="foto"><input type=image class="circle" src='/static/images/perfil.png' width="200" height="200"></a>  <BR></BR>  
+    
+    
+    <div class="center-align">
+        <font size = 5 face="Roboto" color = "red">{{ buscado }}</font><br>
+        <a class="perfil">{{ user.email }}</a><br>
+        
+        <div class="switch">
+    <label>
+        Fav
+    
+      <input type="checkbox">
+      <span class="lever"></span>
+    </label>
+  </div>
+    </div>
    </div>
                 
             </div>
@@ -257,8 +268,9 @@ document.onmousedown = right;
       <a href=""><span class="black-text email">{{ user.email }}</span></a>
     </div></li>
             
-    <li><a href="/home/"><i class="material-icons">view_module</i>Home</a></li>     
-     <li><a type="submit" onclick="window.location.href='/logout/' "><i class="material-icons">settings_power</i>Salir</a> </li>   
+    <li><a href="/home/"><i class="material-icons">view_module</i>Home</a></li> 
+    <li><a href="perfil/"  ><i class="material-icons">perm_identity</i>Perfil</a></li>          
+    <li><a type="submit" onclick="window.location.href='/logout/' "><i class="material-icons">settings_power</i>Salir</a> </li>   
    
      <li><div class="divider"></div></li>            
     <li><a class="subheader">Favoritos</a></li>
@@ -287,8 +299,3 @@ document.onmousedown = right;
 
     
 </html>
-
-
-
-
-
