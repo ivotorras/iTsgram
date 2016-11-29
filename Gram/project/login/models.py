@@ -11,6 +11,7 @@ class Document(models.Model):
     docfile = models.FileField(upload_to='documents/')
     fecha = models.CharField(max_length=255, blank=True)
     #uploaded_at = models.DateTimeField(auto_now_add=True)
+    
 
     
     def publicado(self):
@@ -20,6 +21,10 @@ class Document(models.Model):
     def __str__(self):
         return self.user
 
+class Favs(models.Model):
+    user = models.CharField(max_length=32, blank=False)
+    userseg = models.CharField(max_length=32, blank=False)
+
     
 class Comentarios(models.Model):
     f_comentada = models.ForeignKey(Document, on_delete=models.CASCADE)
@@ -28,11 +33,8 @@ class Comentarios(models.Model):
     
 class Likes(models.Model):
     f_comentada = models.ForeignKey(Document, on_delete=models.CASCADE)
-    cantidad = models.IntegerField()
-    
-    def aumentar(self):
-        self.cantidad += 1
-        self.save()    
+    quien =  models.CharField(max_length=32, blank=False, default="pepe" )
+  
 
   
     

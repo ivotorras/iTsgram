@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^home/$', subir , name="subir" ),
     url(r'^home/$', home),
     url(r'^home/(?P<username>[-\w]+)$', perfilajeno),
+    url(r'^home/(?P<username>[-\w]+)/fav$', favs),
     url(r'^register/$', register , name="register"),
     url(r'^register/success/$', register_success),
     url(r'^login/$', 'django.contrib.auth.views.login'),

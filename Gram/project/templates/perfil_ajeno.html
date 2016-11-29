@@ -137,15 +137,16 @@ document.onmousedown = right;
     
     
     <div class="center-align">
-        <font size = 5 face="Roboto" color = "red">{{ buscado }}</font><br>
-        <a class="perfil">{{ user.email }}</a><br>
+        <font size = 5 face="Roboto" color = "black">{{ buscado }}</font><br>
+        
         
         <div class="switch">
     <label>
-        Fav
-    
-      <input type="checkbox">
-      <span class="lever"></span>
+         <form action="/home/{{ buscado }}/fav" method="post" enctype="multipart/form-data">
+            Fav
+            <input type="checkbox" >
+            <span class="lever"></span>
+        </form> 
     </label>
   </div>
     </div>
@@ -273,12 +274,7 @@ document.onmousedown = right;
     <li><a type="submit" onclick="window.location.href='/logout/' "><i class="material-icons">settings_power</i>Salir</a> </li>   
    
      <li><div class="divider"></div></li>            
-    <li><a class="subheader">Favoritos</a></li>
-    <li><a class="waves-effect">Cheru</a></li>
-    <li><a class="waves-effect">Ivo</a></li>
-    <li><a class="waves-effect">Enano</a></li>
-    <li><a class="waves-effect">Huevo</a></li>        
-    <li><div class="divider"></div></li>       
+    {% for nombre in %}
        
           
   </ul>
