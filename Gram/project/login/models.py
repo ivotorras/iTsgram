@@ -22,7 +22,7 @@ class Document(models.Model):
         return self.user
 
 class Favs(models.Model):
-    user = models.CharField(max_length=32, blank=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     userseg = models.CharField(max_length=32, blank=False)
 
     
@@ -33,8 +33,7 @@ class Comentarios(models.Model):
     
 class Likes(models.Model):
     f_comentada = models.ForeignKey(Document, on_delete=models.CASCADE)
-    quien =  models.CharField(max_length=32, blank=False, default="pepe" )
-  
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   
     
