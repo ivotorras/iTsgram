@@ -1,13 +1,23 @@
+{% load static %}
 <html>
 <head>    
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}" media="screen,projection" />
+    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>  
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    
+    
+    <!--
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="botones.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css"> 
     
+-->
     <title>iTsgram</title>
     
 
@@ -104,16 +114,25 @@ document.onmousedown = right;
 
     
  <div class="navbar-fixed">
-    <nav>
-    <div class="nav-wrapper">        
- 
-      <a href="http://127.0.0.1:8000/home/" class="brand-logo right"><img src="/static/images/logos.png" height="50" style="margin-top:6.5px;"></a>
-        <ul id="nav-mobile" class="left hide-on-med-and-down">
-  <a href="#" data-activates="slide-out" class="aaa"><i class="material-icons">menu</i></a>
-        </ul>
-  
+        <nav>
+    <div class="nav-wrapper">
+      <a href="http://127.0.0.1:8000/home/" class="brand-logo right"><img src="/static/images/logos.png" height="50" style="margin-top:6px;"></a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><a href="#" data-activates="slide-out" class="aaa"><i class="material-icons">menu</i></a></li>
+      </ul>
+
+          <form name="fo" action="/home/search/" method="GET">
+        <div class="row">
+        <div class="col l5 offset-l3">
+        <div class="input-field radio" style="height: 80%; margin-top:6px;">
+          <input id="deletea"class="radio blue" maxlength="30" id="text" placeholder="Buscar" type="search" name="q" value="{{ query|escape }}" required >
+          <label for="search"><i class="material-icons" style="margin-top:-5px;">search</i></label>
+          <i class="material-icons" style="margin-top:-5px;" onclick="deletea()">close</i>
+        </div></div></div>
+      </form>
+        
     </div>
-  </nav>
+  </nav>      
   </div>
   <BR></BR>   
     
@@ -142,27 +161,57 @@ document.onmousedown = right;
       </div>
     
     
-   <div class="row center">
-    <table class="centered">
-        <tbody>
-          <tr>
-            <td><input class="modal-trigger z-depth-1" type=image src='/static/images/1.jpg' width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger z-depth-1" type=image src="/static/images/2.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger z-depth-1" type=image src="/static/images/3.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-          <tr>
-            <td><input class="modal-trigger z-depth-1" type=image src="/static/images/4.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger z-depth-1" type=image src="/static/images/5.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger z-depth-1" type=image src="/static/images/6.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-          <tr>
-            <td><input class="modal-trigger z-depth-1" type=image src="/static/images/7.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger z-depth-1" type=image src="/static/images/8.jpg" width="350" height="200" href="#modal1"></td>
-            <td><input class="modal-trigger z-depth-1" type=image src="/static/images/9.jpg" width="350" height="200" href="#modal1"></td>
-          </tr>
-        </tbody>
-      </table>
+   {% if pasadas %}
+            <ul>
+                  <div class="row" style="margin-left:8%   ; margin-right:8%;">
+                {% for document in pasadas %}
+                   <div class="col s12 m6 l4">
+                    
+                        {{ document.user }}
+                        {{ document.fecha }}
+                        <input class="modal-trigger" type=image src="{{ document.docfile.url }}" width="350" height="200" href="#modal2">  {{ document.descri }}  
+                
+				    
+                    	
+                
+					<form action="/home/"  method="get" enctype="multipart/form-data">
+						{% csrf_token %}
+						<input type="hidden" name="docfile" value="{{ document.pk }}" />
+						<input type="submit" value="Delete" />
+        			</form>		
+                      </div>   
+                {% endfor %}
+            
+    {% else %}
+            <p>No documents.</p>
+    {% endif %}
+
+                      
+                </div>              
+       </ul>
+    
+    <div id="modal2" class="modal">
+    <div class="modal-content">
+    <div align = "center"> 
+        <input class="centered modal-1" type=image id="modal1" width="565" height="340">
+        </div>    
+  
+        <ul class="collapsible" data-collapsible="accordion">
+    <li>
+        
+        
+                    
+        <div class="collapsible-header"><a class="btn tooltipped" data-position="top" data-delay="10" data-tooltip="Comments"><i class="material-icons">comment</i></a></div>
+
+   
+      <div class="collapsible-body">
+          
+  
+     </div>
+    </li>    
+  </ul>         
     </div>
+    </div> 
 
     
     
@@ -186,7 +235,9 @@ document.onmousedown = right;
     </div>         
     <script>
     
-    
+      function deletea(){
+        document.getElementById("delit").value = "";
+    }  
     
      $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
@@ -210,6 +261,11 @@ document.onmousedown = right;
     $('.tooltipped').tooltip({delay: 50});
   });    
     
+        
+        $( document ).ready(function() {
+        $(".aaa").sideNav();
+            
+});        
     </script>
     
     
@@ -223,7 +279,7 @@ document.onmousedown = right;
     </div></li>
     <li><a href="../"><i class="material-icons">view_module</i>Home</a></li> 
         
-     <li><a type="submit" onclick="window.location.href='/logout/' "><i class="material-icons">settings_power</i>Logout</a> </li>   
+     <li><a type="submit" onclick="window.location.href='/logout/' "><i class="material-icons">settings_power</i>Salir</a> </li>   
    
      <li><div class="divider"></div></li>            
     <li><a class="subheader">Favoritos</a></li>
@@ -239,15 +295,7 @@ document.onmousedown = right;
     </div> 
     
 </body> 
-    
-     <script>
-        $( document ).ready(function() {
-        $(".aaa").sideNav();
-            
-});
-    </script>
-    
-   
+      
 
 
     

@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+import datetime
 
 # Create your models here.
 
@@ -9,8 +10,7 @@ class Document(models.Model):
     user = models.CharField(max_length=32, blank=False)
     description = models.CharField(max_length=255, blank=True)
     docfile = models.FileField(upload_to='documents/')
-    fecha = models.CharField(max_length=255, blank=True)
-    #uploaded_at = models.DateTimeField(auto_now_add=True)
+    fecha = models.DateTimeField(auto_now_add= True, editable=True)
 
     
     def publicado(self):
@@ -28,14 +28,7 @@ class Comentarios(models.Model):
     
 class Likes(models.Model):
     f_comentada = models.ForeignKey(Document, on_delete=models.CASCADE)
-    cantidad = models.IntegerField()
-    
-    def aumentar(self):
-        self.cantidad += 1
-        self.save()    
-
-
-    
+  
     
     
 class Publisher(models.Model):

@@ -11,7 +11,7 @@ from login.models import Document
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_protect
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.shortcuts import render
@@ -60,62 +60,69 @@ def logout_page(request):
  
 @login_required(login_url='/login/')
 def home(request):
-    context  = RequestContext(request)
-    context['user'] = request.user
-    #if request.method == 'POST':
-     #   print 'asd --->', request.FILES
-    #    uplo = request.FILES['uplo']
-    #    fs = FileSystemStorage()
-     #   filename = fs.save(uplo.name, uplo)
-    #    uploaded_file_url = fs.url(filename)
-     #   return render(request, 'home.html', {
-    #       'uploaded_file_url': uploaded_file_url
-    #    })
-    form = DocumentForm(request.POST, request.FILES)
-    documents = Document.objects.all().order_by()
-    return render(
-        request,
-        'home.html',
-        {'documents': documents, 'form': form}
-    )
-
-
-@login_required(login_url='/login/')
-def subir(request):
-    # Handle file upload
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
-            print time.strftime("%d/%m/%y") + " a las " + time.strftime("%H:%M:%S")
+            #print time.strftime("%d/%m/%y") + " a las " + time.strftime("%H:%M:%S")
             newdoc = Document(docfile=request.FILES['docfile'])
-            newdoc.save()
-            newdoc.user= "gosheau"
-            newdoc.save()
-            newdoc.fecha= time.strftime("%d/%m/%y") + " a las " + time.strftime("%H:%M:%S")
-            newdoc.save()
+            #newdoc.save()
+            newdoc.user= request.user.username
+            #newdoc.save()
+            #newdoc.fecha= time.strftime("%d/%m/%y") + " a las " + time.strftime("%H:%M:%S")
+            #newdoc.save()
             newdoc.description= "descrwetui"
             newdoc.save()
+            return redirect(reverse('home'))
+    else:    
+        context  = RequestContext(request)
+        context['user'] = request.user
+        #if request.method == 'POST':
+         #   print 'asd --->', request.FILES
+        #    uplo = request.FILES['uplo']
+        #    fs = FileSystemStorage()
+         #   filename = fs.save(uplo.name, uplo)
+        #    uploaded_file_url = fs.url(filename)
+         #   return render(request, 'home.html', {
+        #       'uploaded_file_url': uploaded_file_url
+        #    })
+        form = DocumentForm(request.POST, request.FILES)
+        documents = Document.objects.order_by('-fecha')
+        for i in documents:
+            print i.__dict__
+        print 'asdasd'
+        return render(
+            request,
+            'home.html',
+            {'documents': documents, 'form': form}
+        )
+    
+def comentar(request, id):
+    if request.method == 'POST':
+        print request.POST.get('comentario')
 
-            # Redirect to the document list after POST
-            return HttpResponseRedirect('/home/')
-    else:
-        form = DocumentForm()  # A empty, unbound form
 
-    # Load documents for the list page
-    documents = Document.objects.all()
-
-    # Render list page with the documents and the form
-    return render(
-        request,
-        'home.html',
-        {'documents': documents, 'form': form}
-    )
 
 @login_required(login_url='/login/')
 def perfil(request):
-    return render_to_response(
-    'perfil.html',
-    { 'user': request.user }
+    form = DocumentForm(request.POST, request.FILES)
+    loggeduser = request.user.username
+    documents = Document.objects.order_by('-fecha')
+    pasadas = []
+
+
+    print loggeduser
+    
+    for i in documents:
+        print loggeduser + " - " + i.user
+        if loggeduser == i.user :
+            print loggeduser + " - " + i.user
+            pasadas.append(i)
+
+    
+    return render(
+        request,
+        'perfil.html',
+        {'pasadas': pasadas, 'form': form}
     )
 
 @login_required(login_url='/login/')
