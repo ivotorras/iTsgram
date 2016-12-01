@@ -1,15 +1,5 @@
-{% load static %}
 <html>
 <head>    
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}" media="screen,projection" />
-    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>  
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-    
-    
-    <!--
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
@@ -17,7 +7,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css"> 
     
--->
     <title>iTsgram</title>
     
 
@@ -144,11 +133,23 @@ document.onmousedown = right;
 
         
     <div class="center-align">
-        <a class="foto"><input type=image class="circle" src='/static/images/perfil.png' width="200" height="200"></a>  <BR></BR>      
-        <div class="center-align">
-            <font size = 5 face="Roboto" color = "red">{{ user.username }}</font><br>
-            <a class="perfil">{{ user.email }}</a><br>
-        </div>  
+        <a class="foto"><input type=image class="circle" src='/static/images/perfil.png' width="200" height="200"></a>  <BR></BR>  
+    
+    
+    <div class="center-align">
+        <font size = 5 face="Roboto" color = "black">{{ buscado }}</font><br>
+        
+        
+        <div class="switch">
+    <label>
+         <form action="/home/{{ buscado }}/fav" method="post" enctype="multipart/form-data">
+            Fav
+            <input type="checkbox" >
+            <span class="lever"></span>
+        </form> 
+    </label>
+  </div>
+    </div>
    </div>
                 
             </div>
@@ -232,9 +233,7 @@ document.onmousedown = right;
     </div>         
     <script>
     
-      function deletea(){
-        document.getElementById("delit").value = "";
-    }  
+    
     
      $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
@@ -258,11 +257,6 @@ document.onmousedown = right;
     $('.tooltipped').tooltip({delay: 50});
   });    
     
-        
-        $( document ).ready(function() {
-        $(".aaa").sideNav();
-            
-});        
     </script>
     
     
@@ -275,16 +269,12 @@ document.onmousedown = right;
       <a href=""><span class="black-text email">{{ user.email }}</span></a>
     </div></li>
             
-    <li><a href="/home/"><i class="material-icons">view_module</i>Home</a></li>     
-     <li><a type="submit" onclick="window.location.href='/logout/' "><i class="material-icons">settings_power</i>Salir</a> </li>   
+    <li><a href="/home/"><i class="material-icons">view_module</i>Home</a></li> 
+    <li><a href="perfil/"  ><i class="material-icons">perm_identity</i>Perfil</a></li>          
+    <li><a type="submit" onclick="window.location.href='/logout/' "><i class="material-icons">settings_power</i>Salir</a> </li>   
    
      <li><div class="divider"></div></li>            
-    <li><a class="subheader">Favoritos</a></li>
-    <li><a class="waves-effect">Cheru</a></li>
-    <li><a class="waves-effect">Ivo</a></li>
-    <li><a class="waves-effect">Enano</a></li>
-    <li><a class="waves-effect">Huevo</a></li>        
-    <li><div class="divider"></div></li>       
+    {% for nombre in %}
        
           
   </ul>
@@ -292,13 +282,16 @@ document.onmousedown = right;
     </div> 
     
 </body> 
-      
+    
+     <script>
+        $( document ).ready(function() {
+        $(".aaa").sideNav();
+            
+});
+    </script>
+    
+   
 
 
     
 </html>
-
-
-
-
-

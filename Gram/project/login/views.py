@@ -128,18 +128,23 @@ def perfil(request):
 @login_required(login_url='/login/')
 def search(request):
     query = request.GET.get('q', '')
+    loggeduser = request.user.username
     if query:
         qset = (
             Q(username__contains=query) 
         )
-        results = User.objects.filter(qset)
-#        results = result.sorted(key = str.lower)
+        todo= User.objects.filter(qset)
+        results = []
+        
+        for i in todo:
+            if i.username != loggeduser:
+                results.append(i)
     else:
         results = []
         
 
     return render_to_response("search.html", {
-        "results": results.order_by('username'),
+        "results": results,
         "query": query
     })
 
@@ -158,5 +163,42 @@ def delete(request):
 
     return HttpResponseRedirect('/home/')
 
+@login_required(login_url='/login/')
+def perfilajeno(request, username):
+    form = DocumentForm(request.POST, request.FILES)
+    documents = Document.objects.all()
+    pasadas = []
+    buscado = username
+    loggeduser = request.user.username
+    
+    for i in documents:
+        print buscado + " - " + i.user
+        if buscado == i.user :
+            print buscado + " - " + i.user
+            pasadas.append(i)
+    return render(
+        request,
+        'perfil_ajeno.html',
+        {'pasadas': pasadas, 'form': form, 'buscado': buscado}
+    )
 
+@login_required(login_url='/login/')
+def favs(request, username):
+    form = DocumentForm(request.POST, request.FILES)
+    documents = Document.objects.all()
+    pasadas = []
+    buscado = username
+    loggeduser = request.user.username
+    fav = Favs
+    
+    for i in documents:
+        print buscado + " - " + i.user
+        if buscado == i.user :
+            print buscado + " - " + i.user
+            pasadas.append(i)
+    return render(
+        request,
+        'perfil_ajeno.html',
+        {'pasadas': pasadas, 'form': form, 'buscado': buscado}
+    )
 
